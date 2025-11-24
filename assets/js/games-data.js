@@ -3,6 +3,7 @@ export const games = [
     { title: "Pytania dla par", icon: "💬", desc: "Ponad 500 pytań, które zbliżają i otwierają na nowe tematy.", link: "pytania-dla-par.html", category: "chat" },
     { title: "Nigdy przenigdy", icon: "🍺", desc: "Dowiedz się o sobie rzeczy, o których nie miałeś pojęcia.", link: "nigdy-przenigdy.html", category: "fun" },
     { title: "Tinder z pozycjami", icon: "🔥", desc: "Przesuwaj w prawo lub w lewo i znajdź wspólne fantazje.", link: "tinder-dla-sexu.html", category: "fire" },
+    { title: "Tinder wspólnych pomysłów", icon: "💡", desc: "Losuj zdania, które chcecie realizować razem.", link: "tinder-wspolnych-pomyslow.html", category: "chat" },
     { title: "Zaparowane Lustro", icon: "🧖‍♀️", desc: "Przetrzyj zaparowane lustro i odkryj, co Was czeka.", link: "zdrapka-pozycji.html", category: "fire" },
     { title: "Planszówka 18+", icon: "♟️", desc: "Interaktywna gra planszowa z zadaniami dla dwojga.", link: "planszowa.html", category: "fun" },
     { title: "Jak dobrze mnie znasz?", icon: "🤔", desc: "Sprawdźcie swoją wiedzę o sobie nawzajem.", link: "jak-dobrze-mnie-znasz.html", category: "chat" },

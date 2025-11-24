@@ -1,0 +1,93 @@
+[
+  {
+    "id": "randki",
+    "name": "Randki",
+    "color": "#f8d7da",
+    "accent": "#f06292",
+    "prompts": [
+      "Weekendowy wyjazd bez planu, gdzie los decyduje o trasie.",
+      "Wieczór filmowy, w którym wybieramy tylko produkcje spoza naszej strefy komfortu.",
+      "Spacer nocą po mieście z termosami gorącej czekolady.",
+      "Kolejna randka to kolacja z jednego garnka – gotujemy razem od A do Z.",
+      "Układamy listę miejsc na spontaniczne randki w najbliższych tygodniach."
+    ]
+  },
+  {
+    "id": "dom",
+    "name": "Domowe", 
+    "color": "#e8eaf6",
+    "accent": "#5c6bc0",
+    "prompts": [
+      "Wieczór planszówek połączony z degustacją serów i wina.",
+      "Urządzamy domowe SPA z maseczkami i masażem stóp.",
+      "Gotujemy potrawę z kuchni, której nigdy nie próbowaliśmy.",
+      "Cały wieczór gramy w nasze ulubione gry z dzieciństwa.",
+      "Tworzymy playlistę piosenek, które kojarzą nam się ze sobą."
+    ]
+  },
+  {
+    "id": "rozwoj",
+    "name": "Rozwój",
+    "color": "#e0f7fa",
+    "accent": "#26c6da",
+    "prompts": [
+      "Wspólne wyzwanie – przez tydzień codziennie uczymy się czegoś nowego przez 15 minut.",
+      "Tworzymy vision board na najbliższy rok i wieszamy go w widocznym miejscu.",
+      "Książka na miesiąc, którą omawiamy co niedzielę przy kawie.",
+      "Ustalamy poranny rytuał, który będziemy robić razem choćby przez 5 minut.",
+      "Co tydzień losujemy temat rozmowy na długi spacer."
+    ]
+  },
+  {
+    "id": "bliskosc",
+    "name": "Bliskość",
+    "color": "#f3e5f5",
+    "accent": "#ab47bc",
+    "prompts": [
+      "Wieczór bez ekranów – tylko rozmowa i patrzenie sobie w oczy.",
+      "Piszemy do siebie listy i czytamy je przy świecach.",
+      "Tworzymy słoik komplementów, z którego losujemy karteczkę codziennie rano.",
+      "Przez jeden dzień mówimy do siebie tylko czułymi zdrobnieniami.",
+      "Wspólne ćwiczenia oddechowe przed snem."
+    ]
+  },
+  {
+    "id": "przygoda",
+    "name": "Przygoda",
+    "color": "#fff3e0",
+    "accent": "#ff9800",
+    "prompts": [
+      "Całodniowa wycieczka rowerowa po nieznanej okolicy.",
+      "Losujemy numer pociągu i jedziemy do ostatniej stacji na spacer.",
+      "Weekend w namiocie lub camperze, nawet jeśli niedaleko domu.",
+      "Wyprawa na wschód słońca z termosami kawy.",
+      "Zapisujemy się na warsztaty, które wydają nam się totalnie nowe."
+    ]
+  },
+  {
+    "id": "kreatywnosc",
+    "name": "Kreatywność",
+    "color": "#e8f5e9",
+    "accent": "#66bb6a",
+    "prompts": [
+      "Malujemy wspólny obraz bez podglądania, a na koniec łączymy płótna.",
+      "Kręcimy krótkie wideo z naszego dnia i montujemy je wieczorem.",
+      "Piszemy miniopowiadanie – każde po jednym akapicie.",
+      "Zmieniamy pokój, aranżując go tym, co już mamy w domu.",
+      "Przygotowujemy domowy escape room dla drugiej osoby."
+    ]
+  },
+  {
+    "id": "selfcare",
+    "name": "Self-care",
+    "color": "#f0f4c3",
+    "accent": "#c0ca33",
+    "prompts": [
+      "Wieczór offline z książkami i herbatą w łóżku.",
+      "Wspólne rozciąganie albo joga dla par.",
+      "Godzina totalnej ciszy – każdy robi coś dla siebie w jednym pokoju.",
+      "Plan na reset: spacer, lekka kolacja, kąpiel i wczesne spanie.",
+      "Tworzymy listę małych rzeczy, które poprawiają nam humor."
+    ]
+  }
+]

@@ -640,6 +640,7 @@ function getRoomByKeyOrFail(string $roomKey): array
 const BOARD_MAX_INDEX = 38;
 
 const TINDER_POSITIONS_PATH = '/../obrazy/zdrapki';
+const TINDER_IDEAS_DATA_PATH = '/../data/tinder-wspolne-pomysly.json';
 
 function listTinderPositions(): array
 {
@@ -680,6 +681,109 @@ function listTinderPositions(): array
     natsort($files);
     $cache = array_values($files);
     return $cache;
+}
+
+function loadTinderIdeasCatalog(): array
+{
+    static $cache = null;
+    if (is_array($cache)) {
+        return $cache;
+    }
+
+    $path = realpath(__DIR__ . TINDER_IDEAS_DATA_PATH);
+    if ($path === false || !is_file($path)) {
+        $cache = [];
+        return $cache;
+    }
+
+    $raw = file_get_contents($path);
+    $data = json_decode((string)$raw, true);
+    if (!is_array($data)) {
+        $cache = [];
+        return $cache;
+    }
+
+    $catalog = [];
+    foreach ($data as $item) {
+        $id = trim((string)($item['id'] ?? ''));
+        $name = trim((string)($item['name'] ?? ''));
+        $color = (string)($item['color'] ?? '');
+        $accent = (string)($item['accent'] ?? '');
+        $prompts = $item['prompts'] ?? [];
+        if ($id === '' || $name === '' || !is_array($prompts) || empty($prompts)) {
+            continue;
+        }
+        $catalog[] = [
+            'id' => $id,
+            'name' => $name,
+            'color' => $color,
+            'accent' => $accent,
+            'prompts' => array_values(array_filter(array_map('trim', $prompts), static function ($prompt) {
+                return $prompt !== '';
+            })),
+        ];
+    }
+
+    $cache = $catalog;
+    return $cache;
+}
+
+function listTinderIdeas(): array
+{
+    static $cache = null;
+    if (is_array($cache)) {
+        return $cache;
+    }
+
+    $catalog = loadTinderIdeasCatalog();
+    $result = [];
+    foreach ($catalog as $category) {
+        $categoryId = (string)$category['id'];
+        $categoryName = (string)$category['name'];
+        $color = (string)($category['color'] ?? '');
+        $accent = (string)($category['accent'] ?? '');
+        $prompts = $category['prompts'] ?? [];
+        foreach ($prompts as $index => $text) {
+            $result[] = [
+                'id' => sprintf('%s-%d', $categoryId, $index),
+                'text' => (string)$text,
+                'category' => $categoryId,
+                'category_name' => $categoryName,
+                'color' => $color,
+                'accent' => $accent,
+            ];
+        }
+    }
+
+    $cache = $result;
+    return $cache;
+}
+
+function buildTinderIdeasPayload(array $categories, int $count = 10): array
+{
+    $pool = listTinderIdeas();
+    if (empty($pool)) {
+        return [];
+    }
+
+    $categorySet = array_filter(array_map('trim', $categories));
+    if (!empty($categorySet)) {
+        $categorySet = array_unique($categorySet);
+        $pool = array_values(array_filter($pool, static function (array $idea) use ($categorySet): bool {
+            return in_array((string)($idea['category'] ?? ''), $categorySet, true);
+        }));
+    }
+
+    if (empty($pool)) {
+        return [];
+    }
+
+    if ($count > count($pool)) {
+        $count = count($pool);
+    }
+
+    shuffle($pool);
+    return array_slice($pool, 0, max(1, $count));
 }
 
 function normalizeTinderPositionId(string $path): string
