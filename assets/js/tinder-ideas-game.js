@@ -387,16 +387,13 @@ function getSelectedCategoryIds() {
   if (!ideaCategories.length) {
     return [];
   }
-  if (!selectedCategories.size) {
-    return ideaCategories.map((category) => category.id).filter(Boolean);
-  }
   return Array.from(selectedCategories);
 }
 
 function updateSetupLimits() {
   const activeCategories = new Set(getSelectedCategoryIds());
   availablePool = ideaCategories.reduce((total, category) => {
-    if (!activeCategories.size || activeCategories.has(category.id)) {
+    if (activeCategories.size > 0 && activeCategories.has(category.id)) {
       return total + (Array.isArray(category.prompts) ? category.prompts.length : 0);
     }
     return total;
@@ -423,7 +420,7 @@ function renderCategoryChips() {
   }
   categoryList.innerHTML = '';
   const fragment = document.createDocumentFragment();
-  const activeSelection = selectedCategories.size ? selectedCategories : new Set(ideaCategories.map((item) => item.id));
+  const activeSelection = selectedCategories;
 
   ideaCategories.forEach((category) => {
     const label = document.createElement('label');
@@ -487,7 +484,7 @@ async function loadIdeaCatalog() {
     const data = await response.json();
     if (Array.isArray(data)) {
       ideaCategories = data;
-      selectedCategories = new Set(ideaCategories.map((item) => item.id));
+      selectedCategories = new Set();
       renderCategoryChips();
     }
   } catch (error) {
