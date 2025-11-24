@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Poznaj wszystkie pozycje</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+    rel="stylesheet">
+  <script type="module" src="assets/js/poznaj-pozycje.js"></script>
+</head>
+
+<body class="page page--positions" data-theme="dark">
+  <main class="container">
+    <header class="hero animate-in">
+      <div class="hero__branding">
+        <a class="hero__logo-link" href="index.html">
+          <img class="hero__logo" src="https://sklep.allemedia.pl/momenty/logo.png" alt="Momenty" />
+        </a>
+        <div class="hero__text">
+          <h1>Poznaj wszystkie pozycje</h1>
+          <p id="positions-info">Zainspirujcie się i wybierzcie ulubione propozycje na wspólny wieczór.</p>
+        </div>
+        <details class="game-switcher">
+          <summary class="game-switcher__toggle">Wybierz grę</summary>
+          <div class="game-switcher__panel">
+            <ul class="game-switcher__list">
+              <li><a class="game-switcher__link" href="pytania-dla-par.html">Pytania dla par</a></li>
+              <li><a class="game-switcher__link" href="nigdy-przenigdy.html">Nigdy przenigdy</a></li>
+              <li><a class="game-switcher__link" href="plan-wieczoru.html">Plan Wieczoru – We Dwoje</a></li>
+              <li><a class="game-switcher__link" href="planszowa.html">Planszówka dla dwojga (dla dorosłych)</a></li>
+              <li><a class="game-switcher__link" href="planszowa-romantyczna.html">Planszówka dla dwojga (romantyczna,
+                  zbliżająca)</a></li>
+              <li><a class="game-switcher__link" href="trio-challenge.html">Kółko i krzyżyk Wyzwanie</a></li>
+              <li><a class="game-switcher__link" href="zdrapka-pozycji.html">Zaparowane Lustro</a></li>
+              <li><a class="game-switcher__link" href="pozycje-na-czas.html">Pozycje na czas</a></li>
+              <li><a class="game-switcher__link" href="niegrzeczne-kolo.html">Niegrzeczne koło</a></li>
+              <li><a class="game-switcher__link" href="poznaj-wszystkie-pozycje.html" aria-current="page">Poznaj
+                  wszystkie pozycje</a></li>
+              <li><a class="game-switcher__link" href="tinder-dla-sexu.html">Tinder z pozycjami</a></li>
+              <li><a class="game-switcher__link" href="5-7-10.html">5 • 7 • 10 sekund</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <button class="btn btn--ghost" id="theme-toggle" type="button" aria-label="Przełącz motyw">🌙</button>
+    </header>
+
+    <section class="card card--play animate-in delay-200" id="game-card">
+      <div class="card__header">
+        <h2>Wszystkie pozycje</h2>
+        <p class="card__lead" id="positions-lead">
+          Oglądajcie zdjęcia, klikajcie w serduszka i wybierzcie, co najbardziej Was kręci.
+        </p>
+        <button type="button" class="btn btn--ghost" id="show-all-button" hidden>Chcesz wysłać swoje
+          propozycje?</button>
+      </div>
+      <section class="positions-summary" id="positions-summary" hidden aria-live="polite">
+        <div class="positions-summary__group" id="positions-summary-common" hidden>
+          <h3 class="positions-summary__title">Wasze wspólne typy</h3>
+          <ul class="positions-summary__list" id="positions-summary-common-list"></ul>
+        </div>
+        <div class="positions-summary__group" id="positions-summary-partner" hidden>
+          <h3 class="positions-summary__title">Partner proponuje też</h3>
+          <ul class="positions-summary__list" id="positions-summary-partner-list"></ul>
+        </div>
+      </section>
+      <div class="positions-grid" id="positions-grid" role="list"></div>
+      <p class="positions-empty" id="positions-empty" hidden>Brak pozycji do wyświetlenia. Odśwież stronę lub spróbuj
+        ponownie później.</p>
+    </section>
+
+    <div class="share-bar" id="share-bar" hidden>
+      <button type="button" class="btn btn--primary share-bar__button" id="share-open" aria-haspopup="dialog"
+        aria-controls="share-card" aria-expanded="false">
+        Udostępnij
+      </button>
+    </div>
+
+    <section class="share-layer" id="share-layer" data-open="false" aria-hidden="true" hidden>
+      <div class="share-layer__backdrop" id="share-backdrop"></div>
+      <section class="card card--share share-layer__panel" id="share-card" role="dialog" aria-modal="true"
+        aria-labelledby="share-card-title" tabindex="-1">
+        <div class="share-card__header">
+          <h2 id="share-card-title">Wyślij swoje typy</h2>
+          <button type="button" class="share-card__close" id="share-close">
+            <span aria-hidden="true">×</span>
+            <span class="visually-hidden">Zamknij okno „Wyślij swoje typy”</span>
+          </button>
+        </div>
+        <div class="share-card__body">
+          <p id="share-hint">Polub przynajmniej jedną pozycję, aby udostępnić ją partnerowi.</p>
+          <p class="share__count" id="share-count" hidden></p>
+          <p class="share-feedback" id="share-feedback" hidden role="status"></p>
+          <div class="share__actions">
+            <button type="button" class="btn btn--ghost" id="share-copy" disabled hidden>Kopiuj link</button>
+            <button type="button" class="btn btn--ghost" id="share-show-qr" hidden disabled>Zeskanuj QR dla
+              partnera</button>
+            <div class="share-links" id="share-links">
+              <a class="share-link" data-share-channel="messenger" href="#" aria-disabled="true"
+                tabindex="-1">Messenger</a>
+              <a class="share-link" data-share-channel="whatsapp" href="#" aria-disabled="true"
+                tabindex="-1">WhatsApp</a>
+              <a class="share-link" data-share-channel="sms" href="#" aria-disabled="true" tabindex="-1">SMS</a>
+            </div>
+          </div>
+          <form class="share-email" id="share-email" hidden>
+            <label class="share-email__field" for="share-email-input">
+              <span class="share-email__label">Adres e-mail partnera</span>
+              <input type="email" id="share-email-input" name="partner_email" placeholder="partner@przyklad.pl"
+                autocomplete="email" required />
+            </label>
+            <button type="submit" class="btn btn--primary">Wyślij</button>
+            <p class="share-email__feedback" id="share-email-feedback" hidden role="status"></p>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <nav class="footer__nav">
+        <a href="index.html">Powrót do wyboru gier</a>
+      </nav>
+    </footer>
+  </main>
+
+  <div id="share-qr-modal" class="qr-modal" hidden aria-hidden="true">
+    <div class="qr-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="share-qr-title">
+      <h2 id="share-qr-title">Zeskanuj kod QR</h2>
+      <img id="share-qr-image" class="qr-modal__image" alt="Kod QR prowadzący do udostępnionych pozycji"
+        loading="lazy" />
+      <p class="qr-modal__link">
+        <a id="share-qr-url" href="#" target="_blank" rel="noopener">Otwórz link w nowej karcie</a>
+      </p>
+      <button type="button" class="btn btn--ghost" id="share-qr-close">Zamknij</button>
+    </div>
+  </div>
+</body>
+
+</html>

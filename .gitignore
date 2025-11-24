@@ -1,0 +1,18 @@
+# runtime DB
+db/
+*.sqlite
+*.db
+
+# binarki – nie do repo
+assets/fonts/
+*.woff
+*.woff2
+*.ttf
+*.otf
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.zip
+*.pdf

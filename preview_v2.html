@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momenty v2 - Emotion & Flow Preview</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Custom Styles for v2 Preview */
+        :root {
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --neon-glow: 0 0 20px rgba(242, 109, 111, 0.3);
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* 1. Sticky Glass Header */
+        .v2-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: var(--glass-border);
+        }
+
+        .v2-logo {
+            height: 32px;
+            filter: drop-shadow(0 0 8px rgba(242, 109, 111, 0.5));
+        }
+
+        /* 2. Hero Section with 3D Card */
+        .v2-hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            perspective: 1000px;
+            /* For 3D effect */
+        }
+
+        .v2-hero__title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #fff 0%, #f26d6f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(242, 109, 111, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .v2-hero__card-container {
+            width: 280px;
+            height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+            margin-bottom: 2rem;
+        }
+
+        .v2-hero__card {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            border: var(--glass-border);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* 3D Tilt Effect on Hover */
+        .v2-hero__card-container:hover .v2-hero__card {
+            transform: rotateX(5deg) rotateY(-5deg);
+        }
+
+        .v2-card-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+        }
+
+        .v2-card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .v2-card-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .v2-btn-play {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(242, 109, 111, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .v2-btn-play:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(242, 109, 111, 0.6);
+        }
+
+        /* 3. Mood Filter */
+        .v2-mood-filter {
+            position: sticky;
+            top: 70px;
+            /* Below header */
+            z-index: 90;
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            /* Hide scrollbar */
+            background: linear-gradient(to bottom, rgba(var(--color-bg-rgb), 0), rgba(var(--color-bg-rgb), 1) 20%);
+            margin-bottom: 1rem;
+        }
+
+        .v2-mood-pill {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            color: var(--color-text);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .v2-mood-pill.active,
+        .v2-mood-pill:hover {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+            box-shadow: 0 5px 15px rgba(242, 109, 111, 0.3);
+        }
+
+        /* 4. Masonry Grid */
+        .v2-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+            padding: 0 1.5rem 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .v2-grid-item {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--color-text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v2-grid-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+            border-color: var(--color-primary);
+        }
+
+        /* Featured items span 2 rows or cols */
+        .v2-grid-item--featured {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(242, 109, 111, 0.1) 100%);
+        }
+
+        .v2-grid-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .v2-grid-item:hover .v2-grid-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .v2-grid-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+
+        /* Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 480px) {
+            .v2-grid-item--featured {
+                grid-column: span 1;
+                /* Stack on mobile */
+            }
+
+            .v2-hero__title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="page" data-theme="light">
+
+    <!-- 1. Header -->
+    <header class="v2-header">
+        <img src="https://sklep.allemedia.pl/momenty/logo.png" alt="Momenty" class="v2-logo">
+        <button class="btn btn--ghost" id="theme-toggle" type="button">🌙</button>
+    </header>
+
+    <!-- 2. Hero -->
+    <section class="v2-hero">
+        <h1 class="v2-hero__title">Zmień wieczór<br>w przygodę ✨</h1>
+
+        <div class="v2-hero__card-container">
+            <div class="v2-hero__card">
+                <div class="v2-card-icon">🎲</div>
+                <h2 class="v2-card-title">Prawda czy Wyzwanie</h2>
+                <p class="v2-card-desc">Klasyk w nowym, pikantnym wydaniu.</p>
+                <a href="prawda-wyzwanie.html" class="v2-btn-play">Zagraj teraz</a>
+            </div>
+        </div>
+
+        <p style="opacity: 0.6; font-size: 0.9rem; margin-top: 1rem;">Kliknij, aby wylosować inną grę 🎲</p>
+    </section>
+
+    <!-- 3. Mood Filter -->
+    <nav class="v2-mood-filter">
+        <button class="v2-mood-pill active">Wszystkie ✨</button>
+        <button class="v2-mood-pill">Ogień 🔥</button>
+        <button class="v2-mood-pill">Rozmowa 💬</button>
+        <button class="v2-mood-pill">Zabawa 🎲</button>
+    </nav>
+
+    <!-- 4. Masonry Grid -->
+    <section class="v2-grid">
+        <!-- Featured Item -->
+        <a href="pytania-dla-par.html" class="v2-grid-item v2-grid-item--featured">
+            <div class="v2-grid-icon">💬</div>
+            <span class="v2-grid-title">Pytania dla par</span>
+        </a>
+
+        <a href="nigdy-przenigdy.html" class="v2-grid-item">
+            <div class="v2-grid-icon">🍺</div>
+            <span class="v2-grid-title">Nigdy przenigdy</span>
+        </a>
+
+        <a href="planszowa.html" class="v2-grid-item">
+            <div class="v2-grid-icon">♟️</div>
+            <span class="v2-grid-title">Planszówka 18+</span>
+        </a>
+
+        <a href="tinder-dla-sexu.html" class="v2-grid-item v2-grid-item--featured"
+            style="background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(179,141,255,0.2));">
+            <div class="v2-grid-icon">🔥</div>
+            <span class="v2-grid-title">Tinder z pozycjami</span>
+        </a>
+
+        <a href="5-7-10.html" class="v2-grid-item">
+            <div class="v2-grid-icon">⏱️</div>
+            <span class="v2-grid-title">5 • 7 • 10 sekund</span>
+        </a>
+
+        <a href="zdrapka-pozycji.html" class="v2-grid-item">
+            <div class="v2-grid-icon">🎫</div>
+            <span class="v2-grid-title">Zaparowane Lustro</span>
+        </a>
+
+        <a href="trio-challenge.html" class="v2-grid-item">
+            <div class="v2-grid-icon">⭕</div>
+            <span class="v2-grid-title">Kółko i krzyżyk</span>
+        </a>
+    </section>
+
+    <script type="module" src="assets/js/app.js"></script>
+    <script>
+        // Simple script for preview interactions
+        document.querySelectorAll('.v2-mood-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.v2-mood-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                // Simulate filtering
+                const grid = document.querySelector('.v2-grid');
+                grid.style.opacity = '0.5';
+                setTimeout(() => grid.style.opacity = '1', 300);
+            });
+        });
+    </script>
+</body>
+
+</html>

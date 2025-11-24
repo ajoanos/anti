@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momenty - Gry dla Par</title>
+  <meta name="description"
+    content="Zestaw gier dla par, które zbliżają, bawią i podkręcają atmosferę. Odkryjcie nowe pragnienia i bawcie się lepiej niż kiedykolwiek.">
+  <meta property="og:title" content="Momenty - Gry dla Par">
+  <meta property="og:description" content="Zestaw gier dla par, które zbliżają, bawią i podkręcają atmosferę.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://sklep.allemedia.pl/momenty/logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/css/style.css?v=2.1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="page" data-theme="light">
+
+  <!-- 1. Header -->
+  <header class="v2-header">
+    <img src="https://sklep.allemedia.pl/momenty/logo.png" alt="Momenty" class="v2-logo">
+    <button class="btn btn--ghost" id="theme-toggle" type="button" aria-label="Przełącz motyw">🌙</button>
+  </header>
+
+  <!-- 3. Hero -->
+  <section class="v2-hero" id="hero-section">
+    <div class="v2-hero__wrapper">
+      <!-- Left Column: Greeting & Time -->
+      <div class="v2-hero__left">
+        <div class="v2-hero__text-container">
+          <div class="v2-hero__meta">
+            <div class="v2-hero__badge" id="hero-badge">Dobry Wieczór</div>
+            <div class="v2-hero__icon-large" id="hero-time-icon">✨</div>
+          </div>
+          <h1 class="v2-hero__title" id="hero-greeting">Zmień wieczór<br>w przygodę</h1>
+          <p class="v2-hero__subtitle">Złamcie rutynę, odkryjcie nowe pragnienia i bawcie się lepiej niż kiedykolwiek.
+          </p>
+          <p class="v2-hero__cta">Wybierzcie grę i dajcie się ponieść.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Game Drawer -->
+      <div class="v2-hero__right">
+        <div class="v2-hero__card-container">
+          <div class="v2-hero__card" id="hero-card">
+            <!-- Content injected by JS -->
+            <div class="v2-card-icon" id="hero-icon"></div>
+            <h2 class="v2-card-title" id="hero-title"></h2>
+            <p class="v2-card-desc" id="hero-desc"></p>
+            <a href="#" class="v2-btn-play" id="hero-link">Zagraj teraz</a>
+          </div>
+        </div>
+
+        <button id="random-game-btn" class="v2-random-btn">
+          <span>🎲</span> Losuj inną grę
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="v2-section-title">Jak to działa?</h2>
+
+  <!-- 4. How it Works -->
+  <section class="v2-how-it-works">
+    <div class="v2-step">
+      <div class="v2-step__icon">🔥</div>
+      <h3 class="v2-step__title">Wybierz Klimat</h3>
+      <p class="v2-step__desc">Ogień, Relacja czy Zabawa?</p>
+    </div>
+    <div class="v2-step">
+      <div class="v2-step__icon">🚀</div>
+      <h3 class="v2-step__title">Uruchom Grę</h3>
+      <p class="v2-step__desc">Bez instalacji, działa od razu.</p>
+    </div>
+    <div class="v2-step">
+      <div class="v2-step__icon">❤️</div>
+      <h3 class="v2-step__title">Budujcie Wspomnienia</h3>
+      <p class="v2-step__desc">Tylko Wy dwoje.</p>
+    </div>
+  </section>
+
+  <!-- 3. Mood Filter -->
+  <nav class="v2-mood-filter">
+    <button class="v2-mood-pill active" data-filter="all">Wszystkie ✨</button>
+    <button class="v2-mood-pill" data-filter="fire">Ogień 🔥</button>
+    <button class="v2-mood-pill" data-filter="chat">Rozmowa 💬</button>
+    <button class="v2-mood-pill" data-filter="fun">Zabawa 🎲</button>
+  </nav>
+
+  <!-- 4. Masonry Grid -->
+  <section class="v2-grid" id="games-grid">
+    <!-- Games injected by JS -->
+  </section>
+
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/home.js"></script>
+</body>
+
+</html>

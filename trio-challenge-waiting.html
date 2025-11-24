@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Kółko i krzyżyk Wyzwanie – Poczekalnia</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+    rel="stylesheet" />
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/waiting-room.js"></script>
+</head>
+
+<body class="page page--waiting" data-theme="light" data-host-page="trio-challenge-room.html"
+  data-home-page="trio-challenge.html" data-room-page="trio-challenge-board.html">
+  <main class="container">
+    <header class="hero animate-in">
+      <div class="hero__branding">
+        <a class="hero__logo-link" href="index.html">
+          <img class="hero__logo" src="https://sklep.allemedia.pl/momenty/logo.png" alt="Momenty" />
+        </a>
+        <div class="hero__text">
+          <h1>Poczekalnia Kółko i krzyżyk Wyzwanie</h1>
+          <p id="waiting-room-label"></p>
+        </div>
+        <details class="game-switcher">
+          <summary class="game-switcher__toggle">Wybierz grę</summary>
+          <div class="game-switcher__panel">
+            <ul class="game-switcher__list">
+              <li><a class="game-switcher__link" href="pytania-dla-par.html">Pytania dla par</a></li>
+              <li><a class="game-switcher__link" href="nigdy-przenigdy.html">Nigdy przenigdy</a></li>
+              <li><a class="game-switcher__link" href="plan-wieczoru.html">Plan Wieczoru – We Dwoje</a></li>
+              <li><a class="game-switcher__link" href="planszowa.html">Planszówka dla dwojga (dla dorosłych)</a></li>
+              <li><a class="game-switcher__link" href="planszowa-romantyczna.html">Planszówka dla dwojga (romantyczna,
+                  zbliżająca)</a></li>
+              <li><a class="game-switcher__link" href="trio-challenge.html" aria-current="page">Kółko i krzyżyk
+                  Wyzwanie</a></li>
+              <li><a class="game-switcher__link" href="zdrapka-pozycji.html">Zaparowane Lustro</a></li>
+              <li><a class="game-switcher__link" href="pozycje-na-czas.html">Pozycje na czas</a></li>
+              <li><a class="game-switcher__link" href="niegrzeczne-kolo.html">Niegrzeczne koło</a></li>
+              <li><a class="game-switcher__link" href="poznaj-wszystkie-pozycje.html">Poznaj wszystkie pozycje</a></li>
+              <li><a class="game-switcher__link" href="tinder-dla-sexu.html">Tinder z pozycjami</a></li>
+              <li><a class="game-switcher__link" href="5-7-10.html">5 • 7 • 10 sekund</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <button class="btn btn--ghost" id="theme-toggle" type="button" aria-label="Przełącz motyw">🌙</button>
+    </header>
+
+    <section class="waiting-room">
+      <section class="card card--game waiting-room__card animate-in delay-200" id="waiting-card">
+        <h2 id="waiting-title">Oczekiwanie na dołączenie</h2>
+        <p id="waiting-message">Twoja prośba została wysłana. Gdy gospodarz zaakceptuje zgłoszenie, natychmiast
+          wejdziesz do gry.</p>
+        <div class="waiting-room__actions">
+          <button type="button" class="btn btn--ghost" id="waiting-leave">Wróć do tworzenia pokoju</button>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+
+</html>

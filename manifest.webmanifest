@@ -1,0 +1,10 @@
+{
+  "name": "Momenty – Gry dla par",
+  "short_name": "Momenty",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#faf5ff",
+  "theme_color": "#7c3aed",
+  "description": "Momenty: Pytania dla par, Plan Wieczoru – We Dwoje, Zdrapka pozycji oraz Niegrzeczne koło.",
+  "icons": []
+}

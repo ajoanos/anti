@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Pytania dla par – Pokój</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/room.js"></script>
+</head>
+<body class="page page--room" data-theme="light">
+  <main class="container">
+    <header class="hero">
+      <div class="hero__branding">
+        <a class="hero__logo-link" href="index.html">
+          <img
+            class="hero__logo"
+            src="https://sklep.allemedia.pl/momenty/logo.png"
+            alt="Momenty"
+          />
+        </a>
+        <div class="hero__text">
+          <h1 id="hero-title">Pytania dla par</h1>
+          <p id="hero-subtitle">Losujcie pytania i rozmawiajcie, żeby zbliżyć się do siebie jeszcze bardziej.</p>
+        </div>
+        <details class="game-switcher">
+          <summary class="game-switcher__toggle">Wybierz grę</summary>
+          <div class="game-switcher__panel">
+            <ul class="game-switcher__list">
+              <li><a class="game-switcher__link" href="pytania-dla-par.html" aria-current="page">Pytania dla par</a></li>
+              <li><a class="game-switcher__link" href="jak-dobrze-mnie-znasz.html">Jak dobrze mnie znasz</a></li>
+              <li><a class="game-switcher__link" href="nigdy-przenigdy.html">Nigdy przenigdy</a></li>
+              <li><a class="game-switcher__link" href="plan-wieczoru.html">Plan Wieczoru – We Dwoje</a></li>
+              <li><a class="game-switcher__link" href="planszowa.html">Planszówka dla dwojga (dla dorosłych)</a></li>
+              <li><a class="game-switcher__link" href="planszowa-romantyczna.html">Planszówka dla dwojga (romantyczna, zbliżająca)</a></li>
+              <li><a class="game-switcher__link" href="trio-challenge.html">Kółko i krzyżyk Wyzwanie</a></li>
+              <li><a class="game-switcher__link" href="zdrapka-pozycji.html">Zaparowane Lustro</a></li>
+              <li><a class="game-switcher__link" href="pozycje-na-czas.html">Pozycje na czas</a></li>
+              <li><a class="game-switcher__link" href="niegrzeczne-kolo.html">Niegrzeczne koło</a></li>
+              <li><a class="game-switcher__link" href="poznaj-wszystkie-pozycje.html">Poznaj wszystkie pozycje</a></li>
+              <li><a class="game-switcher__link" href="tinder-dla-sexu.html">Tinder z pozycjami</a></li>
+              <li><a class="game-switcher__link" href="5-7-10.html">5 • 7 • 10 sekund</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <button class="btn btn--ghost" id="theme-toggle" type="button" aria-label="Przełącz motyw">🌙</button>
+    </header>
+
+    <div id="room-content" class="room__content" hidden>
+      <section class="card card--categories" id="category-card">
+        <div class="panel__header">
+          <h2 id="question-filter-header">Kategorie pytań</h2>
+          <p class="panel__hint" id="question-filter-hint">
+            Wybierz jedną lub kilka kategorii, aby losować pytania, które najbardziej Was interesują.
+          </p>
+        </div>
+        <div class="question__filter" id="question-filter">
+          <label class="form__field" id="category-select-wrapper">
+            <span>Kategoria</span>
+            <select id="category-select">
+              <option value="">Dowolna</option>
+            </select>
+          </label>
+          <div class="category-list" id="category-chip-list" hidden></div>
+          <div class="category-actions" id="category-chip-actions" hidden>
+            <button type="button" class="btn btn--ghost" id="category-select-all">Wybierz wszystkie</button>
+            <button type="button" class="btn btn--ghost" id="category-clear">Losuj dowolną</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--participants">
+        <h2>Uczestnicy</h2>
+        <ul id="participants-list" class="participants"></ul>
+      </section>
+
+      <section class="card card--question">
+        <div id="question-empty" class="question__empty">
+          <p id="question-empty-text" class="question__empty-text">Wylosuj pytanie, aby rozpocząć rozmowę.</p>
+          <button type="button" class="btn btn--primary btn--question" id="next-question">Losuj pytanie</button>
+        </div>
+        <article id="question-card" class="question" hidden>
+          <div id="question-content" class="question__content">
+            <header class="question__meta">
+              <span id="question-category" class="question__category"></span>
+              <span id="question-id" class="question__id"></span>
+            </header>
+            <p id="question-text" class="question__text"></p>
+          </div>
+        </article>
+        <div class="question__reactions" id="reaction-buttons" hidden></div>
+      </section>
+
+      <section class="card card--chat" id="chat-card">
+        <header class="card__header card__header--inline">
+          <div>
+            <h2>Czat dla par</h2>
+            <p class="card__subtitle">Pozostańcie w kontakcie nawet na odległość.</p>
+          </div>
+        </header>
+        <div class="chat" aria-live="polite">
+          <ol id="chat-messages" class="chat__messages"></ol>
+          <form id="chat-form" class="chat__form" autocomplete="off">
+            <div class="chat__composer">
+              <label class="chat__input">
+                <span class="visually-hidden">Wpisz wiadomość</span>
+                <textarea
+                  id="chat-input"
+                  name="message"
+                  rows="1"
+                  placeholder="Napisz wiadomość do partnera..."
+                  maxlength="1000"
+                  required
+                ></textarea>
+              </label>
+              <div class="chat__actions">
+                <div class="chat__emoji">
+                  <button
+                    class="chat__emoji-toggle"
+                    id="chat-emoji-toggle"
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >😊</button>
+                  <div class="chat__emoji-panel" id="chat-emoji-panel" hidden>
+                    <button type="button" class="chat__emoji-option" data-emoji="❤️" aria-label="Dodaj serce">❤️</button>
+                    <button type="button" class="chat__emoji-option" data-emoji="😘" aria-label="Dodaj buziaka">😘</button>
+                    <button type="button" class="chat__emoji-option" data-emoji="🥰" aria-label="Dodaj czułość">🥰</button>
+                    <button type="button" class="chat__emoji-option" data-emoji="😍" aria-label="Dodaj zachwyt">😍</button>
+                    <button type="button" class="chat__emoji-option" data-emoji="😉" aria-label="Dodaj mrugnięcie">😉</button>
+                    <button type="button" class="chat__emoji-option" data-emoji="😊" aria-label="Dodaj uśmiech">😊</button>
+                    <button type="button" class="chat__emoji-option" data-emoji="🎉" aria-label="Dodaj konfetti">🎉</button>
+                    <button type="button" class="chat__emoji-option" data-emoji="🔥" aria-label="Dodaj ogień">🔥</button>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn--primary chat__send">Wyślij</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="card card--catalog" id="category-browser">
+        <h2>Rozwiń kategorię i wybierz jakie pytanie chcesz zadać</h2>
+        <div class="catalog">
+          <ul id="catalog-categories" class="catalog__categories"></ul>
+          <div id="catalog-questions" class="catalog__questions" hidden>
+            <h3 id="catalog-category-title" class="catalog__panel-title"></h3>
+            <p id="catalog-empty" class="catalog__empty" hidden>Brak pytań w tej kategorii.</p>
+            <ul id="catalog-list" class="catalog__list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--reactions">
+        <h2>Reakcje</h2>
+        <ul id="reactions-list" class="reactions"></ul>
+      </section>
+    </div>
+
+    <div id="host-requests-overlay" class="host-requests-modal" hidden aria-hidden="true">
+      <aside
+        id="host-requests"
+        class="host-requests"
+        hidden
+        aria-live="polite"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="host-requests-title"
+      >
+        <h2 id="host-requests-title" class="host-requests__title">Prośby o dołączenie</h2>
+        <p id="host-requests-empty" class="host-requests__empty">Gdy ktoś poprosi o wejście do pokoju, zobaczysz to tutaj.</p>
+        <ul id="host-requests-list" class="host-requests__list requests"></ul>
+      </aside>
+    </div>
+
+    <div class="share-bar" id="share-bar" hidden>
+      <button
+        type="button"
+        class="btn btn--primary share-bar__button"
+        id="share-open"
+        aria-haspopup="dialog"
+        aria-controls="share-card"
+        aria-expanded="false"
+      >
+        Udostępnij pokój
+      </button>
+    </div>
+
+    <section class="share-layer" id="share-layer" data-open="false" aria-hidden="true" hidden>
+      <div class="share-layer__backdrop" id="share-backdrop"></div>
+      <section
+        class="card card--share share-layer__panel"
+        id="share-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="share-card-title"
+        tabindex="-1"
+      >
+        <div class="share-card__header">
+          <h2 id="share-card-title">Udostępnij pokój</h2>
+          <button type="button" class="share-card__close" id="share-close">
+            <span aria-hidden="true">×</span>
+            <span class="visually-hidden">Zamknij okno „Udostępnij pokój”</span>
+          </button>
+        </div>
+        <div class="share-card__body">
+          <p id="share-hint">Wyślij partnerowi link, aby dołączył do pokoju.</p>
+          <p class="share-feedback" id="share-feedback" hidden role="status" aria-live="polite"></p>
+          <div class="share__actions">
+            <button type="button" class="btn btn--ghost" id="share-copy" disabled>Kopiuj link</button>
+            <button type="button" class="btn btn--ghost" id="share-show-qr" disabled>Zeskanuj QR dla partnera</button>
+            <div class="share-links" id="share-links">
+              <a class="share-link" data-share-channel="messenger" href="#" aria-disabled="true" tabindex="-1">Messenger</a>
+              <a class="share-link" data-share-channel="whatsapp" href="#" aria-disabled="true" tabindex="-1">WhatsApp</a>
+              <a class="share-link" data-share-channel="sms" href="#" aria-disabled="true" tabindex="-1">SMS</a>
+            </div>
+          </div>
+          <form class="share-email" id="share-email">
+            <label class="share-email__field" for="share-email-input">
+              <span class="share-email__label">Adres e-mail partnera</span>
+              <input type="email" id="share-email-input" name="partner_email" placeholder="partner@przyklad.pl" autocomplete="email" required />
+            </label>
+            <button type="submit" class="btn btn--primary">Wyślij</button>
+            <p class="share-email__feedback" id="share-email-feedback" hidden role="status"></p>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <div id="share-qr-modal" class="qr-modal" hidden aria-hidden="true">
+      <div class="qr-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="share-qr-title">
+        <h2 id="share-qr-title">Zeskanuj kod QR</h2>
+        <img id="share-qr-image" class="qr-modal__image" alt="Kod QR prowadzący do pokoju" loading="lazy" />
+        <p class="qr-modal__link">
+          <a id="share-qr-url" href="#" target="_blank" rel="noopener">Otwórz link w nowej karcie</a>
+        </p>
+        <button type="button" class="btn btn--ghost" id="share-qr-close">Zamknij</button>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <nav class="footer__nav">
+        <a href="index.html">Powrót do wyboru gier</a>
+      </nav>
+    </footer>
+  </main>
+</body>
+</html>

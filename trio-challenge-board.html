@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Kółko i krzyżyk Wyzwanie – pokój gry</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+    rel="stylesheet" />
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/trio-challenge.js"></script>
+</head>
+
+<body class="page page--board trio-page" data-theme="light">
+  <main class="planszowka-shell">
+    <header class="hero planszowka-hero animate-in">
+      <div class="hero__branding">
+        <a class="hero__logo-link" href="index.html">
+          <img class="hero__logo" src="https://sklep.allemedia.pl/momenty/logo.png" alt="Momenty" />
+        </a>
+        <div class="hero__text">
+          <h1>Kółko i krzyżyk Wyzwanie</h1>
+          <p>Wybierz planszę 3×3 lub 4×4. Na mniejszej wystarczą trzy symbole w linii, na większej potrzebujesz
+            czterech, aby wylosować zadanie.</p>
+        </div>
+        <details class="game-switcher">
+          <summary class="game-switcher__toggle">Wybierz grę</summary>
+          <div class="game-switcher__panel">
+            <ul class="game-switcher__list">
+              <li><a class="game-switcher__link" href="pytania-dla-par.html">Pytania dla par</a></li>
+              <li><a class="game-switcher__link" href="nigdy-przenigdy.html">Nigdy przenigdy</a></li>
+              <li><a class="game-switcher__link" href="plan-wieczoru.html">Plan Wieczoru – We Dwoje</a></li>
+              <li><a class="game-switcher__link" href="planszowa.html">Planszówka dla dwojga (dla dorosłych)</a></li>
+              <li><a class="game-switcher__link" href="planszowa-romantyczna.html">Planszówka dla dwojga (romantyczna,
+                  zbliżająca)</a></li>
+              <li><a class="game-switcher__link" href="trio-challenge.html" aria-current="page">Kółko i krzyżyk
+                  Wyzwanie</a></li>
+              <li><a class="game-switcher__link" href="zdrapka-pozycji.html">Zaparowane Lustro</a></li>
+              <li><a class="game-switcher__link" href="pozycje-na-czas.html">Pozycje na czas</a></li>
+              <li><a class="game-switcher__link" href="niegrzeczne-kolo.html">Niegrzeczne koło</a></li>
+              <li><a class="game-switcher__link" href="poznaj-wszystkie-pozycje.html">Poznaj wszystkie pozycje</a></li>
+              <li><a class="game-switcher__link" href="tinder-dla-sexu.html">Tinder z pozycjami</a></li>
+              <li><a class="game-switcher__link" href="5-7-10.html">5 • 7 • 10 sekund</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <button class="btn btn--ghost" id="theme-toggle" type="button" aria-label="Przełącz motyw">🌙</button>
+    </header>
+
+    <div class="planszowka-main">
+      <section class="planszowka-status animate-in delay-200" aria-live="polite">
+        <header class="card__header card__header--inline">
+          <div>
+            <h2>Aktualni gracze</h2>
+            <p class="card__subtitle">Runda <span id="trio-round-label">1</span></p>
+          </div>
+          <p id="trio-turn" class="trio-status__turn">Czekamy na graczy…</p>
+        </header>
+        <ul class="trio-players" id="trio-players"></ul>
+        <p id="trio-waiting" class="trio-status__hint">Udostępnij pokój partnerowi, aby rozpocząć partię.</p>
+      </section>
+
+      <section class="card trio-mode" id="trio-mode-card">
+        <header class="card__header card__header--inline">
+          <div>
+            <h2>Tryb zadań</h2>
+            <p class="card__subtitle">Wybór widoczny tylko dla gospodarza.</p>
+          </div>
+          <p id="trio-mode-label"></p>
+        </header>
+        <div class="trio-mode__actions" id="trio-mode-actions">
+          <button type="button" class="btn btn--primary" data-mode="soft">Soft 😌</button>
+          <button type="button" class="btn btn--ghost" data-mode="extreme">Extreme 😈</button>
+        </div>
+        <p id="trio-mode-hint" class="trio-mode__hint">Dołączający partner pozna wybór dopiero po zakończeniu rundy.</p>
+      </section>
+
+      <section class="card trio-board-card">
+        <header class="card__header card__header--inline">
+          <div>
+            <h2 id="trio-board-title">Plansza 4×4</h2>
+            <p id="trio-board-subtitle" class="card__subtitle">Kliknij pole, aby postawić swój symbol.</p>
+          </div>
+        </header>
+        <div class="trio-board-toggle" id="trio-board-toggle" role="group" aria-label="Wybierz rozmiar planszy">
+          <button type="button" class="btn btn--ghost trio-board-toggle__button" data-size="3" aria-pressed="false">
+            Plansza 3×3
+          </button>
+          <button type="button" class="btn btn--ghost trio-board-toggle__button" data-size="4" aria-pressed="true">
+            Plansza 4×4
+          </button>
+        </div>
+        <div class="trio-board" id="trio-board" role="grid" aria-label="Plansza Kółko i krzyżyk Wyzwanie"></div>
+        <button type="button" class="btn btn--ghost" id="trio-reset" disabled>Zacznij nową grę</button>
+        <p id="trio-move-hint" class="trio-board__hint"></p>
+        <section class="trio-result" id="trio-result" hidden>
+          <h3 id="trio-result-title"></h3>
+          <p id="trio-result-text"></p>
+          <ul id="trio-challenges" class="trio-challenges"></ul>
+        </section>
+      </section>
+
+      <section class="card trio-rules">
+        <h2>Jak grać?</h2>
+        <ol>
+          <li>Gracz X gra symbolem „X”, gracz O gra symbolem „O”.</li>
+          <li>Ruchy wykonujecie naprzemiennie, klikając pola na wybranej planszy (3×3 lub 4×4).</li>
+          <li>Na planszy 3×3 wygrywa układ trzech symboli w linii, a na planszy 4×4 – czterech symboli w linii.</li>
+          <li>Przegrany losuje mini-wyzwanie, dopasowane do wybranego trybu. Przy remisie każdy otrzymuje własne
+            zadanie.</li>
+          <li>Po zakończeniu kliknij „Zacznij nową grę”, by rozpocząć kolejną rundę.</li>
+        </ol>
+      </section>
+
+      <div class="share-bar" id="share-bar" hidden>
+        <button type="button" class="btn btn--primary share-bar__button" id="share-open" aria-haspopup="dialog"
+          aria-controls="share-card" aria-expanded="false">
+          Udostępnij pokój
+        </button>
+      </div>
+
+      <section class="share-layer" id="share-layer" data-open="false" aria-hidden="true" hidden>
+        <div class="share-layer__backdrop" id="share-backdrop"></div>
+        <section class="card card--share share-layer__panel" id="share-card" role="dialog" aria-modal="true"
+          aria-labelledby="share-card-title" tabindex="-1">
+          <div class="share-card__header">
+            <h2 id="share-card-title">Udostępnij pokój</h2>
+            <button type="button" class="share-card__close" id="share-close">
+              <span aria-hidden="true">×</span>
+              <span class="visually-hidden">Zamknij okno „Udostępnij pokój”</span>
+            </button>
+          </div>
+          <div class="share-card__body">
+            <p id="share-hint">Wyślij partnerowi link, aby dołączył do Kółko i krzyżyk Wyzwanie.</p>
+            <p class="share-feedback" id="share-feedback" hidden role="status" aria-live="polite"></p>
+            <div class="share__actions">
+              <button type="button" class="btn btn--ghost" id="share-copy">Kopiuj link</button>
+              <button type="button" class="btn btn--ghost" id="share-show-qr">Pokaż kod QR</button>
+              <div class="share-links" id="share-links">
+                <a class="share-link" data-share-channel="messenger" href="#" aria-disabled="true"
+                  tabindex="-1">Messenger</a>
+                <a class="share-link" data-share-channel="whatsapp" href="#" aria-disabled="true"
+                  tabindex="-1">WhatsApp</a>
+                <a class="share-link" data-share-channel="sms" href="#" aria-disabled="true" tabindex="-1">SMS</a>
+              </div>
+            </div>
+            <form id="share-email" class="share-email">
+              <label class="share-email__field" for="share-email-input">
+                <span class="share-email__label">Wyślij link e-mailem</span>
+                <input type="email" id="share-email-input" name="email" placeholder="np. partner@adres.pl"
+                  autocomplete="email" required />
+              </label>
+              <button type="submit" class="btn btn--primary">Wyślij</button>
+              <p id="share-email-feedback" class="share-email__feedback" hidden role="status"></p>
+            </form>
+          </div>
+        </section>
+      </section>
+
+      <div id="share-qr-modal" class="qr-modal" hidden aria-hidden="true">
+        <div class="qr-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="share-qr-title">
+          <h2 id="share-qr-title">Zeskanuj kod QR</h2>
+          <img id="share-qr-image" class="qr-modal__image" alt="Kod QR z linkiem do pokoju" loading="lazy" />
+          <p class="qr-modal__link">
+            <a id="share-qr-url" href="#" target="_blank" rel="noopener">Otwórz link w nowej karcie</a>
+          </p>
+          <button type="button" class="btn btn--ghost" id="share-qr-close">Zamknij</button>
+        </div>
+      </div>
+  </main>
+</body>
+
+</html>

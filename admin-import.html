@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Pytania dla par – Import pytań</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+  <script type="module" src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/import.js"></script>
+</head>
+<body class="page page--import" data-theme="light">
+  <main class="container">
+    <header class="hero">
+      <div class="hero__branding">
+        <img
+          class="hero__logo"
+          src="https://sklep.allemedia.pl/momenty/logo.png"
+          alt="Momenty"
+        />
+        <div class="hero__text">
+          <h1>Import pytań</h1>
+          <p>Wklej listę pytań w formacie JSON i zapisz, aby nadpisać bazę pytań.</p>
+        </div>
+      </div>
+    </header>
+    <section class="card">
+      <form id="import-form" class="form">
+        <label class="form__field">
+          <span>Dane JSON</span>
+          <textarea id="questions-json" rows="12" placeholder='[\n  { "id": "...", "category": "...", "text": "..." }\n]' required></textarea>
+        </label>
+        <button type="submit" class="btn btn--primary">Zapisz</button>
+      </form>
+      <p class="form__hint">Uwaga: brak autoryzacji – każda osoba znająca adres może importować dane.</p>
+    </section>
+    <footer class="footer">
+      <a class="btn btn--ghost" href="index.html">Powrót</a>
+    </footer>
+  </main>
+</body>
+</html>

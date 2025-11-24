@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Pozycje na czas</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+    rel="stylesheet">
+  <script type="module" src="assets/js/pozycje-na-czas.js"></script>
+</head>
+
+<body class="page page--timer page--game" data-theme="light">
+  <div class="background-layer"></div>
+  <main class="container">
+    <header class="hero animate-in">
+      <div class="hero__branding">
+        <a class="hero__logo-link" href="index.html">
+          <img class="hero__logo" src="https://sklep.allemedia.pl/momenty/logo.png" alt="Momenty" />
+        </a>
+        <div class="hero__text">
+          <h1>Pozycje na czas</h1>
+          <p>Losuj pozycję, ustaw odliczanie i bawcie się w rytmie zegara.</p>
+        </div>
+        <details class="game-switcher">
+          <summary class="game-switcher__toggle">Wybierz grę</summary>
+          <div class="game-switcher__panel">
+            <ul class="game-switcher__list">
+              <li><a class="game-switcher__link" href="pytania-dla-par.html">Pytania dla par</a></li>
+              <li><a class="game-switcher__link" href="nigdy-przenigdy.html">Nigdy przenigdy</a></li>
+              <li><a class="game-switcher__link" href="plan-wieczoru.html">Plan Wieczoru – We Dwoje</a></li>
+              <li><a class="game-switcher__link" href="planszowa.html">Planszówka dla dwojga (dla dorosłych)</a></li>
+              <li><a class="game-switcher__link" href="planszowa-romantyczna.html">Planszówka dla dwojga (romantyczna,
+                  zbliżająca)</a></li>
+              <li><a class="game-switcher__link" href="trio-challenge.html">Kółko i krzyżyk Wyzwanie</a></li>
+              <li><a class="game-switcher__link" href="zdrapka-pozycji.html">Zaparowane Lustro</a></li>
+              <li><a class="game-switcher__link" href="pozycje-na-czas.html" aria-current="page">Pozycje na czas</a>
+              </li>
+              <li><a class="game-switcher__link" href="niegrzeczne-kolo.html">Niegrzeczne koło</a></li>
+              <li><a class="game-switcher__link" href="poznaj-wszystkie-pozycje.html">Poznaj wszystkie pozycje</a></li>
+              <li><a class="game-switcher__link" href="tinder-dla-sexu.html">Tinder z pozycjami</a></li>
+              <li><a class="game-switcher__link" href="5-7-10.html">5 • 7 • 10 sekund</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <button class="btn btn--ghost" id="theme-toggle" type="button" aria-label="Przełącz motyw">🌙</button>
+    </header>
+
+    <section class="card card--play card--timer-modern animate-in delay-200" id="game-card">
+
+      <div class="timer-display">
+        <div class="timer-ring-wrapper">
+          <svg class="timer-ring" viewBox="0 0 120 120">
+            <circle class="timer-ring__bg" cx="60" cy="60" r="54" />
+            <circle class="timer-ring__progress" id="timer-progress-ring" cx="60" cy="60" r="54" pathLength="1" />
+          </svg>
+          <div class="timer-image-mask">
+            <img id="timer-image" alt="Losowa pozycja" />
+          </div>
+          <div class="timer-countdown-overlay" id="timer-countdown-overlay"></div>
+        </div>
+      </div>
+
+      <div class="timer-controls">
+        <div class="timer-info">
+          <p class="timer-status" id="timer-status" role="status" aria-live="polite">Ładuję...</p>
+          <div class="timer-time" id="timer-remaining">00:00</div>
+        </div>
+
+        <div class="timer-duration" role="group" aria-label="Czas odliczania">
+          <label class="timer-duration__option">
+            <input type="radio" name="timer_duration" value="30" />
+            <span>30s</span>
+          </label>
+          <label class="timer-duration__option">
+            <input type="radio" name="timer_duration" value="60" checked />
+            <span>60s</span>
+          </label>
+          <label class="timer-duration__option">
+            <input type="radio" name="timer_duration" value="120" />
+            <span>120s</span>
+          </label>
+        </div>
+
+        <div class="timer-actions">
+          <button type="button" class="btn btn--ghost" id="skip-position">
+            <span class="icon">🎲</span> Losuj
+          </button>
+          <button type="button" class="btn btn--primary" id="start-timer">
+            <span class="icon">▶️</span> Start
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <nav class="footer__nav">
+        <a href="index.html">Powrót do wyboru gier</a>
+      </nav>
+    </footer>
+  </main>
+  <div class="timer-overlay" id="timer-overlay" data-mode="hidden" aria-live="assertive" aria-atomic="true">
+    <div class="timer-overlay__countdown" id="timer-countdown"></div>
+    <div class="timer-overlay__celebration" id="timer-celebration">
+      <div class="timer-overlay__message">
+        <span class="timer-overlay__headline">Gratulacje!</span>
+        <span class="timer-overlay__subline">Udało się!</span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

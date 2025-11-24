@@ -1,0 +1,108 @@
+{
+  "id": "plan-wieczoru",
+  "name": "Plan Wieczoru – We Dwoje",
+  "password": "wedwoje25",
+  "storageKey": "momenty.planWieczoru.access",
+  "summary": {
+    "title": "Twój plan wieczoru jest gotowy!",
+    "subtitle": "Sprawdź podsumowanie i wyślij wiadomość do partnera.",
+    "buttonLabel": "Wyślij plan do partnera"
+  },
+  "email": {
+    "subject": "Wieczór we dwoje – krótki plan 💛",
+    "detailsLink": "https://sklep.allemedia.pl/momenty/plan-wieczoru-play.html",
+    "proposalLink": "https://sklep.allemedia.pl/momenty/plan-wieczoru-room.html"
+  },
+  "steps": [
+    {
+      "id": "mood",
+      "title": "Na jaki wieczór masz dziś ochotę?",
+      "type": "single",
+      "randomOptionId": "mood-random",
+      "allowCustomInput": true,
+      "inputPlaceholder": "Opisz swój nastrój…",
+      "options": [
+        { "id": "mood-calm", "label": "🌙 Spokojny i przytulny" },
+        { "id": "mood-tender", "label": "💛 Czułość i bliskość" },
+        { "id": "mood-romance", "label": "🔥 Romantyczny wieczór" },
+        { "id": "mood-exciting", "label": "😏 Coś bardziej ekscytującego" },
+        { "id": "mood-random", "label": "🎲 Zaskocz mnie — losuj", "isRandom": true }
+      ]
+    },
+    {
+      "id": "closeness",
+      "title": "Jakiej bliskości dziś potrzebujesz?",
+      "type": "single",
+      "allowCustomInput": true,
+      "inputPlaceholder": "Opisz jakiej bliskości potrzebujesz…",
+      "options": [
+        { "id": "closeness-hug", "label": "🤗 Przytulanie" },
+        { "id": "closeness-massage", "label": "💆 Masaż pleców" },
+        { "id": "closeness-kiss", "label": "💋 Całowanie" },
+        { "id": "closeness-gentle", "label": "✨ Delikatna czułość" },
+        { "id": "closeness-soft", "label": "🔥 Intymność (soft)" },
+        { "id": "closeness-spicy", "label": "❤️‍🔥 Intymność (spicy)" },
+        { "id": "closeness-cozy", "label": "🚫 Chcę tylko w spokoju posiedzieć razem." }
+      ]
+    },
+    {
+      "id": "extras",
+      "title": "Co stworzy idealny klimat?",
+      "type": "multi",
+      "allowCustomInput": true,
+      "inputPlaceholder": "Dodaj własny pomysł na klimat…",
+      "options": [
+        { "id": "extras-candles", "label": "🕯️ Świeczki" },
+        { "id": "extras-wine", "label": "🍷 Wino" },
+        { "id": "extras-music", "label": "🎶 Muzyka" },
+        { "id": "extras-bath", "label": "🛁 Ciepła kąpiel" },
+        { "id": "extras-blanket", "label": "🛌 Kocyk" },
+        { "id": "extras-tea", "label": "🍵 Herbatka" },
+        { "id": "extras-movie", "label": "🍿 Film / serial" },
+        { "id": "extras-talk", "label": "🌌 Rozmowa przy wygaszonym świetle" }
+      ]
+    },
+    {
+      "id": "energy",
+      "title": "Jak tam dziś Twoja forma?",
+      "type": "single",
+      "allowCustomInput": true,
+      "inputPlaceholder": "Opisz swoją formę…",
+      "options": [
+        {
+          "id": "energy-high",
+          "label": "⚡ Mam dużo energii",
+          "emailContext": "Szykuj się na wieczór pełen działania i dobrej energii."
+        },
+        {
+          "id": "energy-ok",
+          "label": "🙂 Jest okej",
+          "emailContext": "Wieczór zapowiada się lekki i przyjemny – w sam raz na bliskość."
+        },
+        {
+          "id": "energy-low",
+          "label": "💤 Czuję zmęczenie, chcę spokojnie.",
+          "emailContext": "Potrzebujemy spokoju i delikatności, więc plan jest łagodny."
+        },
+        {
+          "id": "energy-slow",
+          "label": "🌿 Zacznijmy spokojnie zobaczymy co będzie.",
+          "emailContext": "Zostawmy sobie przestrzeń i zobaczmy, co z tego wieczoru wyniknie."
+        }
+      ]
+    },
+    {
+      "id": "timing",
+      "title": "Kiedy chcesz żebyśmy zaczęli?",
+      "type": "single",
+      "options": [
+        { "id": "timing-21", "label": "🕘 21:00" },
+        { "id": "timing-kids", "label": "🕤 Po położeniu dzieci" },
+        { "id": "timing-30", "label": "⏱️ Za 30 minut" },
+        { "id": "timing-60", "label": "🕕 Za godzinę" }
+      ],
+      "allowCustomInput": true,
+      "inputPlaceholder": "Napisz swoją propozycję…"
+    }
+  ]
+}

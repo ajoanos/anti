@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial=" initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Prawda czy Wyzwanie – Gra</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+    rel="stylesheet">
+  <script type="module" src="assets/js/prawda-wyzwanie.js"></script>
+</head>
+
+<body class="page page--game page--timer" data-theme="light">
+  <main class="container">
+    <header class="hero animate-in">
+      <div class="hero__branding">
+        <a class="hero__logo-link" href="index.html">
+          <img class="hero__logo" src="https://sklep.allemedia.pl/momenty/logo.png" alt="Momenty" />
+        </a>
+        <div class="hero__text">
+          <h1>Prawda czy Wyzwanie</h1>
+          <p>Dodaj swoje imię i wybierz kategorie.</p>
+        </div>
+        <details class="game-switcher">
+          <summary class="game-switcher__toggle">Wybierz grę</summary>
+          <div class="game-switcher__panel">
+            <ul class="game-switcher__list">
+              <li><a class="game-switcher__link" href="pytania-dla-par.html">Pytania dla par</a></li>
+              <li><a class="game-switcher__link" href="nigdy-przenigdy.html">Nigdy przenigdy</a></li>
+              <li><a class="game-switcher__link" href="plan-wieczoru.html">Plan Wieczoru – We Dwoje</a></li>
+              <li><a class="game-switcher__link" href="planszowa.html">Planszówka dla dwojga (dla dorosłych)</a></li>
+              <li><a class="game-switcher__link" href="planszowa-romantyczna.html">Planszówka dla dwojga (romantyczna,
+                  zbliżająca)</a></li>
+              <li><a class="game-switcher__link" href="trio-challenge.html">Kółko i krzyżyk Wyzwanie</a></li>
+              <li><a class="game-switcher__link" href="zdrapka-pozycji.html">Zaparowane Lustro</a></li>
+              <li><a class="game-switcher__link" href="pozycje-na-czas.html">Pozycje na czas</a></li>
+              <li><a class="game-switcher__link" href="niegrzeczne-kolo.html">Niegrzeczne koło</a></li>
+              <li><a class="game-switcher__link" href="poznaj-wszystkie-pozycje.html">Poznaj wszystkie pozycje</a></li>
+              <li><a class="game-switcher__link" href="tinder-dla-sexu.html">Tinder z pozycjami</a></li>
+              <li><a class="game-switcher__link" href="5-7-10.html">5 • 7 • 10 sekund</a></li>
+              <li><a class="game-switcher__link" href="prawda-wyzwanie.html" aria-current="page">Prawda czy Wyzwanie</a>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <button class="btn btn--ghost" id="theme-toggle" type="button" aria-label="Przełącz motyw">🌙</button>
+    </header>
+
+    <section class="card card--play card--setup animate-in delay-200" id="intro-card">
+      <header class="card__header">
+        <p class="card__eyebrow">Krok 1 z 2</p>
+        <h2>Podaj imię gracza</h2>
+        <p class="card__hint">Imię pojawi się w historii reakcji oraz obok wylosowanych kart.</p>
+      </header>
+      <form class="form" id="name-form" autocomplete="off">
+        <label class="form__field">
+          <span>Twoje imię</span>
+          <input type="text" id="player-name" name="player_name" placeholder="np. Ola" maxlength="32" required />
+        </label>
+        <div class="form__actions">
+          <button type="submit" class="btn btn--primary btn--enter-room">Przejdź do gry</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card card--play" id="game-card" hidden>
+
+      <article class="panel panel--categories">
+        <div class="panel__header">
+          <h3>Kategorie pytań i wyzwań</h3>
+          <p class="panel__hint">Zaznacz, co Was kręci, lub kliknij „Wybierz wszystkie”.</p>
+        </div>
+        <div class="category-list" id="category-list"></div>
+        <div class="category-actions">
+          <button type="button" class="btn btn--ghost" id="select-all">Wybierz wszystkie</button>
+        </div>
+      </article>
+
+      <article class="panel panel--question">
+        <div class="panel__header">
+          <h3>Wasze karty</h3>
+          <p class="panel__hint" id="last-pick-label">Czekamy na wybór prawdy lub wyzwania.</p>
+        </div>
+        <div class="reveal-grid">
+          <button class="question-card question-card--reveal question-card--truth" type="button" id="truth-card">
+            <span class="question-card__text" id="truth-text">Kliknij, aby odsłonić prawdę.</span>
+            <span class="question-card__overlay">Prawda</span>
+          </button>
+          <button class="question-card question-card--reveal question-card--action question-card--dare" type="button"
+            id="dare-card">
+            <span class="question-card__text" id="dare-text">Kliknij, aby odsłonić wyzwanie.</span>
+            <span class="question-card__overlay">Wyzwanie</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="panel panel--results">
+        <div class="question__reactions">
+          <button type="button" class="btn btn--thumb" id="mark-success" aria-label="Zadanie wykonane" disabled>
+            👍
+          </button>
+          <button type="button" class="btn btn--thumb btn--thumb-down" id="mark-fail" aria-label="Zadanie niewykonane"
+            disabled>
+            👎
+          </button>
+        </div>
+      </article>
+
+      <article class="panel card--reactions">
+        <div class="panel__header">
+          <h3>Co wybrali?</h3>
+        </div>
+        <ul class="reactions" id="reactions-list"></ul>
+      </article>
+
+      <article class="panel panel--status">
+        <p class="game-message" id="status-message" data-tone="muted"></p>
+      </article>
+    </section>
+
+    <div class="share-bar" id="share-bar">
+      <button class="btn btn--primary share-bar__button" type="button" id="share-room">Udostępnij pokój</button>
+      <button class="btn btn--ghost share-bar__button" type="button" id="single-device">Gramy na jednym
+        urządzeniu</button>
+    </div>
+    <p class="form__hint" id="share-feedback" hidden></p>
+
+    <footer class="footer">
+      <nav class="footer__nav">
+        <a href="index.html">Powrót do wyboru gier</a>
+      </nav>
+    </footer>
+  </main>
+</body>
+
+</html>

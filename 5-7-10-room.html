@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>5 • 7 • 10 sekund – Gra</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+    rel="stylesheet" />
+  <script type="module" src="assets/js/sekundy.js"></script>
+</head>
+
+<body class="page page--game page--timer" data-theme="light">
+  <main class="container">
+    <header class="hero animate-in">
+      <div class="hero__branding">
+        <a class="hero__logo-link" href="index.html">
+          <img class="hero__logo" src="https://sklep.allemedia.pl/momenty/logo.png" alt="Momenty" />
+        </a>
+        <div class="hero__text">
+          <h1>5 • 7 • 10 sekund</h1>
+          <p>Dodaj graczy, wybierz ulubione kategorie i bawcie się na błyskawicznych rundach.</p>
+        </div>
+        <details class="game-switcher">
+          <summary class="game-switcher__toggle">Wybierz grę</summary>
+          <div class="game-switcher__panel">
+            <ul class="game-switcher__list">
+              <li><a class="game-switcher__link" href="pytania-dla-par.html">Pytania dla par</a></li>
+              <li><a class="game-switcher__link" href="nigdy-przenigdy.html">Nigdy przenigdy</a></li>
+              <li><a class="game-switcher__link" href="plan-wieczoru.html">Plan Wieczoru – We Dwoje</a></li>
+              <li><a class="game-switcher__link" href="planszowa.html">Planszówka dla dwojga (dla dorosłych)</a></li>
+              <li><a class="game-switcher__link" href="planszowa-romantyczna.html">Planszówka dla dwojga (romantyczna,
+                  zbliżająca)</a></li>
+              <li><a class="game-switcher__link" href="trio-challenge.html">Kółko i krzyżyk Wyzwanie</a></li>
+              <li><a class="game-switcher__link" href="zdrapka-pozycji.html">Zaparowane Lustro</a></li>
+              <li><a class="game-switcher__link" href="pozycje-na-czas.html">Pozycje na czas</a></li>
+              <li><a class="game-switcher__link" href="niegrzeczne-kolo.html">Niegrzeczne koło</a></li>
+              <li><a class="game-switcher__link" href="poznaj-wszystkie-pozycje.html">Poznaj wszystkie pozycje</a></li>
+              <li><a class="game-switcher__link" href="tinder-dla-sexu.html">Tinder z pozycjami</a></li>
+              <li><a class="game-switcher__link" href="5-7-10.html" aria-current="page">5 • 7 • 10 sekund</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <button class="btn btn--ghost" id="theme-toggle" type="button" aria-label="Przełącz motyw">🌙</button>
+    </header>
+
+    <section class="card card--play card--setup animate-in delay-200" id="intro-card">
+      <header class="card__header">
+        <p class="card__eyebrow">Start gry</p>
+        <h2>Dodaj graczy</h2>
+        <p class="card__hint">Wpisz minimum dwa imiona. Możesz dodać kolejnych, kiedy najdzie Was ochota.</p>
+      </header>
+      <form class="form" id="players-form" autocomplete="off">
+        <div class="players-form__fields" id="players-fields">
+          <label class="form__field players-form__field" data-player-field>
+            <span>Gracz 1</span>
+            <input type="text" name="player" placeholder="np. Ola" maxlength="32" required />
+          </label>
+          <label class="form__field players-form__field" data-player-field>
+            <span>Gracz 2</span>
+            <input type="text" name="player" placeholder="np. Kuba" maxlength="32" required />
+          </label>
+        </div>
+        <div class="players-form__actions">
+          <button type="button" class="btn btn--ghost" id="add-player">+ Dodaj kolejnego gracza</button>
+          <button type="submit" class="btn btn--primary btn--enter-room">Zaczynamy zabawę!</button>
+        </div>
+        <p class="form__hint" id="players-error" role="alert" hidden>Podaj co najmniej dwa imiona.</p>
+      </form>
+    </section>
+
+    <section class="card card--play card--timer" id="game-card" hidden>
+      <header class="card__header">
+        <p class="card__eyebrow">Błyskawiczne rundy</p>
+        <h2>Wasza tablica gry</h2>
+        <p class="card__hint">Najpierw wybierzcie kategorie i czas. Potem losuj pytanie i kliknij START CZASU, aby
+          uruchomić okrągły licznik.</p>
+      </header>
+
+      <article class="panel panel--players">
+        <div class="panel__header">
+          <h3>Gracze</h3>
+          <p class="panel__hint" id="player-label">Następny gracz: —</p>
+        </div>
+        <ul class="player-chips" id="players-list"></ul>
+      </article>
+
+      <article class="panel panel--categories">
+        <div class="panel__header">
+          <h3>Kategorie pytań</h3>
+          <p class="panel__hint">Zaznacz ulubione lub kliknij „Wybierz wszystkie”.</p>
+        </div>
+        <div class="category-list" id="category-list"></div>
+        <div class="category-actions">
+          <button type="button" class="btn btn--ghost" id="select-all">Wybierz wszystkie</button>
+        </div>
+      </article>
+
+      <article class="panel panel--timings">
+        <div class="panel__header">
+          <h3>Czas na odpowiedź</h3>
+          <p class="panel__hint">Wybierz 5, 7 lub 10 sekund.</p>
+        </div>
+        <div class="timer-options" id="timer-options"></div>
+      </article>
+
+      <article class="panel panel--question" aria-label="Wylosowane pytanie">
+        <div class="question-card" id="question-card">
+          <p class="question-card__category" id="question-category">Wybierz kategorie i kliknij „Losuj pytanie”.</p>
+          <p class="question-card__text" id="question-text">Gdy losowanie się rozpocznie pytanie pojawi się tutaj!</p>
+        </div>
+      </article>
+
+      <article class="panel panel--timer">
+        <div class="timer-visual" aria-live="polite">
+          <svg class="timer-ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="timer-ring__bg" cx="60" cy="60" r="54"></circle>
+            <circle class="timer-ring__progress" cx="60" cy="60" r="54" id="timer-progress"></circle>
+          </svg>
+          <div class="timer-visual__value" id="timer-value">0</div>
+        </div>
+        <p class="timer-status" id="timer-status">Gotowy do startu.</p>
+        <button type="button" class="btn btn--primary btn--timer-start timer-start" id="start-timer">🎙️ START
+          CZASU</button>
+        <button type="button" class="btn btn--primary btn--wide btn--timer-action timer-action" id="question-action">
+          🎲 Losuj pytanie
+        </button>
+        <button type="button" class="btn btn--ghost btn--wide btn--timer-action" id="skip-question">
+          Pomiń pytanie
+        </button>
+        <p class="game-message" id="game-message" role="status"></p>
+      </article>
+
+      <article class="panel panel--results">
+        <div class="panel__info panel__info--center">
+          <p class="panel__info-title">Po upływie czasu oceń zadanie</p>
+          <p class="panel__hint">Kliknij odpowiednią ikonę, a punkt trafi do gracza.</p>
+        </div>
+        <div class="result-buttons">
+          <button type="button" class="result-button result-button--success" id="mark-success" disabled>
+            <span class="result-button__icon" aria-hidden="true">👍</span>
+            <span>Wykonane</span>
+          </button>
+          <button type="button" class="result-button result-button--fail" id="mark-fail" disabled>
+            <span class="result-button__icon" aria-hidden="true">👎</span>
+            <span>Niewykonane</span>
+          </button>
+        </div>
+      </article>
+
+    </section>
+
+    <footer class="footer">
+      <nav class="footer__nav">
+        <a href="index.html">Powrót do wyboru gier</a>
+      </nav>
+    </footer>
+  </main>
+</body>
+
+</html>

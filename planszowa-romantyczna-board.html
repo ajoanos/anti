@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Planszówka dla dwojga (romantyczna, zbliżająca) – pokój gry</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+    rel="stylesheet" />
+  <script type="module" src="assets/js/app.js"></script>
+</head>
+
+<body class="planszowka-body page page--board" data-theme="light" data-board-variant="romantic">
+  <main class="planszowka-shell">
+    <header class="hero planszowka-hero animate-in">
+      <div class="hero__branding">
+        <a class="hero__logo-link" href="index.html">
+          <img class="hero__logo" src="https://sklep.allemedia.pl/momenty/logo.png" alt="Momenty" />
+        </a>
+        <div class="hero__text">
+          <h1>Planszówka dla dwojga (romantyczna, zbliżająca)</h1>
+          <p>Zadbajcie o bliskość i czułe chwile.</p>
+        </div>
+        <details class="game-switcher">
+          <summary class="game-switcher__toggle">Wybierz grę</summary>
+          <div class="game-switcher__panel">
+            <ul class="game-switcher__list">
+              <li><a class="game-switcher__link" href="pytania-dla-par.html">Pytania dla par</a></li>
+              <li><a class="game-switcher__link" href="nigdy-przenigdy.html">Nigdy przenigdy</a></li>
+              <li><a class="game-switcher__link" href="plan-wieczoru.html">Plan Wieczoru – We Dwoje</a></li>
+              <li><a class="game-switcher__link" href="planszowa.html">Planszówka dla dwojga (dla dorosłych)</a></li>
+              <li><a class="game-switcher__link" href="planszowa-romantyczna.html" aria-current="page">Planszówka dla
+                  dwojga (romantyczna, zbliżająca)</a></li>
+              <li><a class="game-switcher__link" href="trio-challenge.html">Kółko i krzyżyk Wyzwanie</a></li>
+              <li><a class="game-switcher__link" href="zdrapka-pozycji.html">Zaparowane Lustro</a></li>
+              <li><a class="game-switcher__link" href="pozycje-na-czas.html">Pozycje na czas</a></li>
+              <li><a class="game-switcher__link" href="niegrzeczne-kolo.html">Niegrzeczne koło</a></li>
+              <li><a class="game-switcher__link" href="poznaj-wszystkie-pozycje.html">Poznaj wszystkie pozycje</a></li>
+              <li><a class="game-switcher__link" href="tinder-dla-sexu.html">Tinder z pozycjami</a></li>
+              <li><a class="game-switcher__link" href="5-7-10.html">5 • 7 • 10 sekund</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <button class="btn btn--ghost" id="theme-toggle" type="button" aria-label="Przełącz motyw">🌙</button>
+    </header>
+    <div class="planszowka-main">
+      <section class="planszowka-status animate-in delay-200" aria-live="polite">
+        <h2 id="planszowka-turn-label">Czekamy na graczy</h2>
+        <p id="planszowka-wait-hint">Dołączcie w dwójkę, aby zacząć zabawę.</p>
+        <p id="planszowka-info" class="planszowka-info" hidden aria-live="assertive"></p>
+      </section>
+
+      <section class="planszowka-players" id="planszowka-players"></section>
+
+      <section class="planszowka-dice" data-floating="false" hidden>
+        <div class="planszowka-dice__task" id="planszowka-dice-task" aria-live="polite" hidden>
+          <h3 id="planszowka-dice-task-title"></h3>
+          <p id="planszowka-dice-task-body"></p>
+        </div>
+        <div class="planszowka-dice__actions">
+          <button type="button" class="btn btn--primary planszowka-dice__action" id="planszowka-dice-roll"
+            data-role="roll-button" hidden>
+            Rzuć kostką 🎲
+          </button>
+          <div class="planszowka-dice__review" id="planszowka-dice-review" hidden>
+            <button type="button" class="btn btn--primary" data-action="confirm">Dodaj serduszko ❤️</button>
+            <button type="button" class="btn btn--ghost" data-action="skip">Nie wykonał</button>
+          </div>
+        </div>
+        <p id="planszowka-dice-task-notice" class="planszowka-dice__notice" hidden></p>
+      </section>
+
+      <section class="planszowka-task" aria-live="polite">
+        <h3 id="planszowka-task-title">Wybierz pole na planszy</h3>
+        <p id="planszowka-task-body">Rzućcie kostką i przesuwajcie pionki, aby odkryć kolejne zadania.</p>
+        <div id="planszowka-task-actions" class="planszowka-task__actions">
+          <button type="button" class="btn btn--primary" data-role="roll-button">
+            Rzuć kostką 🎲
+          </button>
+          <button type="button" class="btn btn--primary" data-action="confirm">Zrobione – dodaj serduszko ❤️</button>
+          <button type="button" class="btn btn--ghost" data-action="skip">Pomiń – bez punktu</button>
+        </div>
+        <p id="planszowka-task-notice" class="planszowka-task__notice">Poczekajcie, aż dołączy druga osoba.</p>
+      </section>
+
+      <section class="planszowka-board-wrapper" id="planszowka-board-wrapper">
+        <ol id="planszowka-board" class="planszowka-board" aria-label="Plansza Zabawy planszówki"></ol>
+      </section>
+
+      <section id="planszowka-finish" class="planszowka-finish" hidden>
+        <h3>Koniec gry!</h3>
+        <p>Wygrany wybiera jedno zadanie dla przegranego 😉</p>
+        <div id="planszowka-finish-scores" class="planszowka-finish__scores"></div>
+        <button type="button" class="btn btn--primary" id="planszowka-reset">Zagraj jeszcze raz</button>
+      </section>
+    </div>
+
+    <div class="share-bar" id="share-bar" hidden>
+      <button type="button" class="btn btn--primary share-bar__button" id="share-open" aria-haspopup="dialog"
+        aria-controls="share-card" aria-expanded="false">
+        Udostępnij pokój
+      </button>
+    </div>
+
+    <section class="share-layer" id="share-layer" data-open="false" aria-hidden="true" hidden>
+      <div class="share-layer__backdrop" id="share-backdrop"></div>
+      <section class="card card--share share-layer__panel" id="share-card" role="dialog" aria-modal="true"
+        aria-labelledby="share-card-title" tabindex="-1">
+        <div class="share-card__header">
+          <h2 id="share-card-title">Udostępnij pokój</h2>
+          <button type="button" class="share-card__close" id="share-close">
+            <span aria-hidden="true">×</span>
+            <span class="visually-hidden">Zamknij okno „Udostępnij pokój”</span>
+          </button>
+        </div>
+        <div class="share-card__body">
+          <p id="share-hint">Wyślij partnerowi link, aby dołączył do planszówki.</p>
+          <p class="share-feedback" id="share-feedback" hidden role="status" aria-live="polite"></p>
+          <div class="share__actions">
+            <button type="button" class="btn btn--ghost" id="share-copy" disabled>Kopiuj link</button>
+            <button type="button" class="btn btn--ghost" id="share-show-qr" disabled>Zeskanuj QR dla partnera</button>
+            <div class="share-links" id="share-links">
+              <a class="share-link" data-share-channel="messenger" href="#" aria-disabled="true"
+                tabindex="-1">Messenger</a>
+              <a class="share-link" data-share-channel="whatsapp" href="#" aria-disabled="true"
+                tabindex="-1">WhatsApp</a>
+              <a class="share-link" data-share-channel="sms" href="#" aria-disabled="true" tabindex="-1">SMS</a>
+            </div>
+          </div>
+          <form class="share-email" id="share-email">
+            <label class="share-email__field" for="share-email-input">
+              <span class="share-email__label">Adres e-mail partnera</span>
+              <input type="email" id="share-email-input" name="partner_email" placeholder="partner@przyklad.pl"
+                autocomplete="email" required />
+            </label>
+            <button type="submit" class="btn btn--primary">Wyślij</button>
+            <p class="share-email__feedback" id="share-email-feedback" hidden role="status"></p>
+          </form>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="assets/js/planszowka-board.js"></script>
+
+  <div id="share-qr-modal" class="qr-modal" hidden aria-hidden="true">
+    <div class="qr-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="share-qr-title">
+      <h2 id="share-qr-title">Zeskanuj kod QR</h2>
+      <img id="share-qr-image" class="qr-modal__image" alt="Kod QR prowadzący do pokoju" loading="lazy" />
+      <p class="qr-modal__link">
+        <a id="share-qr-url" href="#" target="_blank" rel="noopener">Otwórz link w nowej karcie</a>
+      </p>
+      <button type="button" class="btn btn--ghost" id="share-qr-close">Zamknij</button>
+    </div>
+  </div>
+</body>
+
+</html>
