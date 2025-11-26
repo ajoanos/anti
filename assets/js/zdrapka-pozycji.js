@@ -110,12 +110,18 @@ function createScratchCard() {
   }
 
   function drawSteamLayer() {
-    if (!image) return;
+    if (!image || canvas.width === 0 || canvas.height === 0) return;
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // 1. Draw blurred image
     ctx.globalCompositeOperation = 'source-over';
     ctx.filter = 'blur(20px)';
-    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    if (image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) {
+      ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    }
     ctx.filter = 'none';
 
     // 2. Draw steam overlay
@@ -140,8 +146,19 @@ function createScratchCard() {
     canvas.style.width = `${rect.width}px`;
     canvas.style.height = `${rect.height}px`;
 
-    ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
     drawSteamLayer();
+  }
+
+  async function refreshSteamOverlay() {
+    if (!image.src) return;
+    try {
+      if (!image.complete) {
+        await image.decode();
+      }
+    } catch (err) {
+      console.warn('Nie udało się zdekodować obrazu przed rysowaniem płótna.', err);
+    }
+    resizeCanvas();
   }
 
   function scratch(event) {
@@ -220,7 +237,8 @@ function createScratchCard() {
 
   window.addEventListener('resize', resizeCanvas);
   image.addEventListener('load', () => {
-    drawSteamLayer();
+    // Ensure the canvas matches the image/container size before drawing the steam layer
+    refreshSteamOverlay();
   });
   image.addEventListener('error', () => {
     setStatus('Nie udało się wczytać tej karty. Sprawdź nazwę pliku i spróbuj ponownie.');
@@ -228,7 +246,7 @@ function createScratchCard() {
 
   nextButton.addEventListener('click', () => {
     showRandomCard();
-    resizeCanvas();
+    refreshSteamOverlay();
   });
 
   resizeCanvas();
