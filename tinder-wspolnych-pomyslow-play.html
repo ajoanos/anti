@@ -13,6 +13,19 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
     rel="stylesheet">
+  <script src="assets/js/momenty-guard.js"></script>
+  <script>
+    window.momentyAccessOk = function (expires) {
+      if (typeof window.initMomentyGame === 'function') {
+        window.initMomentyGame();
+      }
+    };
+
+    if (window.__momentyAccessConfirmed && window.__momentyAccessPending) {
+      window.momentyAccessOk(window.__momentyAccessPending);
+      window.__momentyAccessPending = null;
+    }
+  </script>
   <script type="module" src="assets/js/app.js"></script>
   <script type="module" src="assets/js/tinder-ideas-game.js"></script>
 </head>
