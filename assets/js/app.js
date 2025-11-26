@@ -1,7 +1,6 @@
 import { games } from './games-data.js';
 
 const STORAGE_KEY_THEME = 'pary.theme';
-const ACCESS_PASSWORD = 'wedwoje25';
 const ACCESS_STORAGE_KEY = 'pary.access.pdp';
 const PLAN_ACCESS_STORAGE_KEY = 'momenty.planWieczoru.access';
 
@@ -132,28 +131,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const passwordForm = document.getElementById('password-form');
-  const passwordInput = document.getElementById('access-password');
   const passwordError = document.getElementById('password-error');
   const passwordCancel = document.getElementById('password-cancel');
 
   if (passwordForm) {
-    const formPassword = passwordForm.dataset.password || ACCESS_PASSWORD;
     const storageKey = passwordForm.dataset.storageKey || ACCESS_STORAGE_KEY;
     const successTarget = passwordForm.dataset.success || 'pytania-dla-par-room.html';
     const skipRoomKey = passwordForm.dataset.skipRoomKey === 'true';
     const requestedDeck = (passwordForm.dataset.deck || '').trim().toLowerCase();
-    const defaultErrorMessage = passwordError?.textContent || 'Niepoprawne hasło. Spróbuj ponownie.';
+    const defaultErrorMessage =
+      passwordError?.textContent || 'Nie udało się przygotować pokoju. Spróbuj ponownie.';
+    const submitButton = passwordForm.querySelector('button[type="submit"]');
+    let isSubmitting = false;
 
-    if (passwordInput) {
-      passwordInput.value = '';
-      focusElement(passwordInput);
-      passwordInput.addEventListener('input', () => {
-        if (passwordError) {
-          passwordError.textContent = defaultErrorMessage;
-          passwordError.hidden = true;
-        }
-      });
-    }
+    const handleError = (message) => {
+      if (passwordError) {
+        passwordError.textContent = message || defaultErrorMessage;
+        passwordError.hidden = false;
+      } else if (message) {
+        alert(message);
+      }
+    };
 
     passwordCancel?.addEventListener('click', () => {
       const backTarget = passwordCancel.dataset.back;
@@ -164,26 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     passwordForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const value = passwordInput?.value.trim() || '';
-      if (!value) {
-        if (passwordError) {
-          passwordError.textContent = defaultErrorMessage;
-          passwordError.hidden = false;
-        }
-        return;
-      }
-      if (value !== formPassword) {
-        if (passwordError) {
-          passwordError.textContent = defaultErrorMessage;
-          passwordError.hidden = false;
-        }
-        return;
-      }
-
-      const submitButton = passwordForm.querySelector('button[type="submit"]');
+      if (isSubmitting) return;
+      isSubmitting = true;
       try {
         if (submitButton) {
           submitButton.disabled = true;
+          submitButton.setAttribute('aria-busy', 'true');
         }
         let roomKey = '';
         if (!skipRoomKey) {
@@ -201,17 +185,22 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         console.error(error);
         if (passwordError) {
-          passwordError.textContent = error.message || 'Nie udało się przygotować pokoju. Spróbuj ponownie.';
-          passwordError.hidden = false;
-        } else {
-          alert(error.message || 'Nie udało się przygotować pokoju. Spróbuj ponownie.');
+          handleError(error.message || defaultErrorMessage);
+        } else if (error.message) {
+          alert(error.message);
         }
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
+          submitButton.removeAttribute('aria-busy');
         }
+        isSubmitting = false;
       }
     });
+
+    if (passwordForm.dataset.autoStart !== 'false') {
+      passwordForm.dispatchEvent(new Event('submit', { cancelable: true }));
+    }
   }
 
   const joinForm = document.getElementById('join-form');
@@ -222,11 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (params.has('auto')) {
       sessionStorage.setItem(requiredAccessKey, 'true');
-    }
-
-    if (sessionStorage.getItem(requiredAccessKey) !== 'true') {
-      window.location.replace(accessRedirect);
-      return;
     }
 
     const roomKeyField = joinForm.elements.namedItem('room_key');
