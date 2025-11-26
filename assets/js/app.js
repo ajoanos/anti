@@ -199,7 +199,7 @@ export function initGameSwitcher() {
     const li = document.createElement('li');
     const a = document.createElement('a');
     a.className = 'game-switcher__link';
-    a.href = game.link;
+    a.href = appendTokenToUrl(game.link);
     a.textContent = game.title;
 
     if (currentPath === game.link) {
@@ -223,6 +223,14 @@ function focusElement(element) {
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle(document.getElementById('theme-toggle'));
   initGameSwitcher();
+
+  const logoLink = document.querySelector('.hero__logo-link');
+  if (logoLink instanceof HTMLAnchorElement) {
+    const nextHref = appendTokenToUrl(logoLink.getAttribute('href'));
+    if (nextHref) {
+      logoLink.setAttribute('href', nextHref);
+    }
+  }
 
   const productButtons = document.querySelectorAll('[data-action="open-product"]');
   productButtons.forEach((button) => {
