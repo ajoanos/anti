@@ -2,77 +2,77 @@
   {
     "id": "LPP-001",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Jak najchętniej odpoczywasz po ciężkim dniu?"
+    "text": "Jak najbardziej lubisz się resetować po ciężkim dniu?"
   },
   {
     "id": "LPP-002",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Co najzabawniejszego przytrafiło Ci się w tym tygodniu?"
+    "text": "Jaka była najzabawniejsza rzecz, która spotkała Cię w tym tygodniu?"
   },
   {
     "id": "LPP-003",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Gdybyś mógł się teleportować dokądkolwiek na świecie – gdzie lądujesz?"
+    "text": "Gdybyś mógł się teleportować w dowolne miejsce na świecie – gdzie byś wylądował?"
   },
   {
     "id": "LPP-004",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Jakie jedzenie zawsze zamawiasz na randce?"
+    "text": "Co zawsze zamawiasz do jedzenia na randce?"
   },
   {
     "id": "LPP-005",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Co w komediach najbardziej Cię rozbraja?"
+    "text": "Co Cię najbardziej bawi w komediach?"
   },
   {
     "id": "LPP-006",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Jaka piosenka zawsze wyciąga Cię z dołka?"
+    "text": "Jaka piosenka zawsze poprawia Ci humor?"
   },
   {
     "id": "LPP-007",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Jaką supermoc byś sobie wybrał i czemu akurat tę?"
+    "text": "Jaką supermoc byś wybrał i dlaczego akurat tę?"
   },
   {
     "id": "LPP-008",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Jakie jest Twoje totalne guilty pleasure jedzeniowe?"
+    "text": "Jakie jest Twoje największe żywieniowe „guilty pleasure”?"
   },
   {
     "id": "LPP-009",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Ulubiona pora roku i dlaczego właśnie ona?"
+    "text": "Twoja ulubiona pora roku i dlaczego akurat ona?"
   },
   {
     "id": "LPP-010",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Co Cię we mnie najbardziej zaskoczyło na pierwszej randce?"
+    "text": "Co Cię we mnie najbardziej zaskoczyło na naszej pierwszej randce?"
   },
   {
     "id": "LPP-011",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Jakie nowe hobby chciałbyś kiedyś ogarnąć?"
+    "text": "Jakim nowym hobby chciałbyś się kiedyś zająć?"
   },
   {
     "id": "LPP-012",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Najfajniejsze wspomnienie z dzieciństwa?"
+    "text": "Jakie jest Twoje najfajniejsze wspomnienie z dzieciństwa?"
   },
   {
     "id": "LPP-013",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Jedna sławna osoba, którą zaprosiłbyś na kolację – kto i dlaczego?"
+    "text": "Gdybyś mógł zaprosić jedną sławną osobę na kolację – kto by to był i dlaczego?"
   },
   {
     "id": "LPP-014",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Książka albo film z dzieciństwa, który wciąż kochasz?"
+    "text": "Książka albo film z dzieciństwa, do których wciąż masz sentyment?"
   },
   {
     "id": "LPP-015",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Co Cię motywuje, żeby w ogóle wstać z łóżka?"
+    "text": "Co najbardziej motywuje Cię, żeby rano wstać z łóżka?"
   },
   {
     "id": "LPP-016",
@@ -82,12 +82,12 @@
   {
     "id": "LPP-017",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Ulubiony kolor i co w nim takiego specjalnego?"
+    "text": "Jaki jest Twój ulubiony kolor i co w nim lubisz?"
   },
   {
     "id": "LPP-018",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Najdziwniejsza rzecz, jaką kiedykolwiek zjadłeś?"
+    "text": "Jaka jest najdziwniejsza rzecz, którą kiedykolwiek jadłeś?"
   },
   {
     "id": "LPP-019",
@@ -97,22 +97,122 @@
   {
     "id": "LPP-020",
     "category": "LEKKIE_PYTANIA_NA_POCZATEK",
-    "text": "Co najbardziej Cię jara w tym, że jesteśmy razem?"
+    "text": "Co najbardziej jara Cię w tym, że jesteśmy razem?"
+  },
+  {
+    "id": "LPP-021",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Jesteś team kawa czy team herbata i dlaczego ten wybór jest jedynym słusznym?"
+  },
+  {
+    "id": "LPP-022",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Jaki serial ostatnio wciągnął Cię tak, że zarwałeś dla niego nockę?"
+  },
+  {
+    "id": "LPP-023",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Co gotujesz (albo zamawiasz), kiedy masz totalnego doła?"
+  },
+  {
+    "id": "LPP-024",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Bez jakiej apki w telefonie kompletnie nie wyobrażasz sobie życia?"
+  },
+  {
+    "id": "LPP-025",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Jest jakiś sport, który lubisz oglądać, ale w życiu byś go nie uprawiał?"
+  },
+  {
+    "id": "LPP-026",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Wolisz zarywać nocki czy wstawać skoro świt?"
+  },
+  {
+    "id": "LPP-027",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Co Cię najbardziej irytuje u obcych ludzi w miejscach publicznych?"
+  },
+  {
+    "id": "LPP-028",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Wolisz leżeć plackiem na plaży czy zwiedzać do upadłego?"
+  },
+  {
+    "id": "LPP-029",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Twoja popisowa piosenka na karaoke to…?"
+  },
+  {
+    "id": "LPP-030",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Jaki gadżet ostatnio kupiłeś i okazał się totalnym niewypałem?"
+  },
+  {
+    "id": "LPP-031",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Do którego zwierzaka w zoo zawsze musisz podejść?"
+  },
+  {
+    "id": "LPP-032",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Co najbardziej lubisz w nadchodzącej porze roku?"
+  },
+  {
+    "id": "LPP-033",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Do filmu wolisz słodkie czy słone przekąski?"
+  },
+  {
+    "id": "LPP-034",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Kto był Twoją pierwszą nastoletnią miłością z plakatu?"
+  },
+  {
+    "id": "LPP-035",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Gra komputerowa lub planszowa, w którą mógłbyś grać godzinami?"
+  },
+  {
+    "id": "LPP-036",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Czego chciałbyś się nauczyć „w jeden dzień”, jak w Matrixie?"
+  },
+  {
+    "id": "LPP-037",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Jaka pogoda najbardziej psuje Ci humor?"
+  },
+  {
+    "id": "LPP-038",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Czym najchętniej podróżujesz, a czego unikasz jak ognia?"
+  },
+  {
+    "id": "LPP-039",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Jaką zabawkę z dzieciństwa wspominasz najlepiej?"
+  },
+  {
+    "id": "LPP-040",
+    "category": "LEKKIE_PYTANIA_NA_POCZATEK",
+    "text": "Jaki zapach kojarzy Ci się z domem rodzinnym?"
   },
   {
     "id": "PNL-001",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Gdybyśmy byli superbohaterami – kim byśmy byli i dlaczego akurat taką parę byśmy tworzyli?"
+    "text": "Gdybyśmy byli superbohaterami – kim byśmy byli i dlaczego tworzylibyśmy właśnie taki duet?"
   },
   {
     "id": "PNL-002",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Najgłupsza rzecz, jaką zrobiłeś dla czystej frajdy?"
+    "text": "Jaka jest najgłupsza rzecz, którą zrobiłeś tylko dla zabawy?"
   },
   {
     "id": "PNL-003",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Wygrałeś na loterii – co robisz pierwszego dnia?"
+    "text": "Wygrywasz na loterii – co robisz pierwszego dnia?"
   },
   {
     "id": "PNL-004",
@@ -122,32 +222,32 @@
   {
     "id": "PNL-005",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Z kim chciałbyś się zamienić ciałami na jeden dzień i co byś robił?"
+    "text": "Z kim chciałbyś się zamienić ciałami na jeden dzień i co byś wtedy robił?"
   },
   {
     "id": "PNL-006",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Największa randkowa wpadka ever?"
+    "text": "Twoja największa randkowa wpadka w życiu?"
   },
   {
     "id": "PNL-007",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Twój ulubiony dowcip – wal!"
+    "text": "Opowiedz Twój ulubiony kawał – dawaj!"
   },
   {
     "id": "PNL-008",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Gdybyśmy założyli zespół – jak byśmy się nazwali?"
+    "text": "Gdybyśmy założyli zespół muzyczny – jak byśmy się nazwali?"
   },
   {
     "id": "PNL-009",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Najdziwniejsza rzecz, jaką kiedykolwiek włożyłeś na siebie?"
+    "text": "Jaka jest najdziwniejsza rzecz, którą miałeś na sobie?"
   },
   {
     "id": "PNL-010",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Trzy rzeczy na bezludną wyspę – co bierzesz i dlaczego?"
+    "text": "Trzy rzeczy, które zabierasz na bezludną wyspę – co bierzesz i dlaczego?"
   },
   {
     "id": "PNL-011",
@@ -162,52 +262,152 @@
   {
     "id": "PNL-013",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Najlepszy kostium na Halloween, w jakim kiedykolwiek byłeś albo chciałbyś być?"
+    "text": "Najlepszy kostium na Halloween, jaki kiedykolwiek miałeś (albo chciałbyś mieć)?"
   },
   {
     "id": "PNL-014",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Najśmieszniejsza historia rodzinna?"
+    "text": "Najśmieszniejsza historia z Twoją rodziną w roli głównej?"
   },
   {
     "id": "PNL-015",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Jakbyśmy nakręcili film o nas – jaki miałby tytuł?"
+    "text": "Gdyby powstał film o nas – jaki nosiłby tytuł?"
   },
   {
     "id": "PNL-016",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Jaki taniec wychodzi Ci najlepiej (albo najgorzej, ale najśmieszniej)?"
+    "text": "Jaki taniec wychodzi Ci najlepiej (albo najśmieszniej)?"
   },
   {
     "id": "PNL-017",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Najgłupsza plotka, w jaką uwierzyłeś?"
+    "text": "Jaka jest najgłupsza plotka, w którą uwierzyłeś?"
   },
   {
     "id": "PNL-018",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Jakie danie mógłbyś jeść codziennie przez miesiąc i się nie znudzić?"
+    "text": "Jakie danie mógłbyś jeść codziennie przez miesiąc i by Ci się nie znudziło?"
   },
   {
     "id": "PNL-019",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Co w codziennym życiu najbardziej Cię rozbawia?"
+    "text": "Co w codziennym życiu bawi Cię najbardziej?"
   },
   {
     "id": "PNL-020",
     "category": "PYTANIA_NA_LUZIE",
-    "text": "Najlepsza anegdota z pracy?"
+    "text": "Masz jakąś najlepszą anegdotę z pracy?"
+  },
+  {
+    "id": "PNL-021",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Jaka byłaby Twoja rola w naszej ekipie podczas apokalipsy zombie?"
+  },
+  {
+    "id": "PNL-022",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Na jaką totalną głupotę wydałbyś pierwszy milion?"
+  },
+  {
+    "id": "PNL-023",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Gdyby Twój zwierzak umiał mówić, co by o Tobie wygadał?"
+  },
+  {
+    "id": "PNL-024",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Co byś zrobił, gdybyś był niewidzialny przez jeden dzień?"
+  },
+  {
+    "id": "PNL-025",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Przeszłość czy przyszłość – gdzie byś skoczył wehikułem czasu na jedną wycieczkę?"
+  },
+  {
+    "id": "PNL-026",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Masz jakiś dziwny nawyk, z którego sam się śmiejesz?"
+  },
+  {
+    "id": "PNL-027",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "W jakim filmie Twoje życie pasowałoby idealnie jako scenariusz?"
+  },
+  {
+    "id": "PNL-028",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Jakie imię kompletnie do Ciebie nie pasuje, a rodzice mogli Ci je dać?"
+  },
+  {
+    "id": "PNL-029",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Najgorszy prezent, jaki dostałeś i musiałeś udawać radość?"
+  },
+  {
+    "id": "PNL-030",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Jest jakaś teoria spiskowa, która Cię bawi, ale… trochę w nią wierzysz?"
+  },
+  {
+    "id": "PNL-031",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Jakie słowa piosenki zawsze przekręcasz?"
+  },
+  {
+    "id": "PNL-032",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Z jaką postacią z serialu wziąłbyś ślub w ciemno?"
+  },
+  {
+    "id": "PNL-033",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "W jakim reality show byś wymiatał?"
+  },
+  {
+    "id": "PNL-034",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Najbardziej bezużyteczna supermoc, jaką mógłbyś mieć?"
+  },
+  {
+    "id": "PNL-035",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Z kim z Twoich znajomych zamieniłbyś się na życia na jeden tydzień?"
+  },
+  {
+    "id": "PNL-036",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Który mem najlepiej opisuje Twój obecny stan umysłu?"
+  },
+  {
+    "id": "PNL-037",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Najdziwniejsze połączenie smaków, które lubisz?"
+  },
+  {
+    "id": "PNL-038",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Czego byś się najbardziej wstydził, gdyby ktoś przejrzał Twoją historię w przeglądarce?"
+  },
+  {
+    "id": "PNL-039",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "W co głupiego wierzyłeś jako dziecko?"
+  },
+  {
+    "id": "PNL-040",
+    "category": "PYTANIA_NA_LUZIE",
+    "text": "Kto by Cię zagrał w filmie biograficznym i dlaczego to zły wybór?"
   },
   {
     "id": "ROM-001",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Co Cię we mnie najbardziej kręci?"
+    "text": "Co Cię we mnie najbardziej pociąga?"
   },
   {
     "id": "ROM-002",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Najpiękniejsze wspomnienie, które mamy razem?"
+    "text": "Jakie jest Twoje najpiękniejsze wspomnienie związane z nami?"
   },
   {
     "id": "ROM-003",
@@ -217,7 +417,7 @@
   {
     "id": "ROM-004",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Gdzie widzisz nas za 5 lat?"
+    "text": "Gdzie widzisz naszą relację za 5 lat?"
   },
   {
     "id": "ROM-005",
@@ -227,12 +427,12 @@
   {
     "id": "ROM-006",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Najromantyczniejsza rzecz, jaką dla Ciebie zrobiłem?"
+    "text": "Jaka jest najbardziej romantyczna rzecz, którą dla Ciebie zrobiłem?"
   },
   {
     "id": "ROM-007",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Co lubisz najbardziej w tym, jak spędzamy razem czas?"
+    "text": "Co najbardziej lubisz w sposobie, w jaki spędzamy czas?"
   },
   {
     "id": "ROM-008",
@@ -242,12 +442,12 @@
   {
     "id": "ROM-009",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Co ciągle pozytywnie Cię we mnie zaskakuje?"
+    "text": "Co wciąż pozytywnie Cię we mnie zaskakuje?"
   },
   {
     "id": "ROM-010",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Jaka piosenka zawsze przenosi Cię do „nas”?"
+    "text": "Jaka piosenka zawsze kojarzy Ci się z nami?"
   },
   {
     "id": "ROM-011",
@@ -257,37 +457,37 @@
   {
     "id": "ROM-012",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Jak najchętniej się przytulasz?"
+    "text": "W jaki sposób najbardziej lubisz się przytulać?"
   },
   {
     "id": "ROM-013",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Co chciałbyś robić razem na naszą rocznicę?"
+    "text": "Jak chciałbyś spędzić naszą rocznicę?"
   },
   {
     "id": "ROM-014",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "O czym myślisz jako pierwszym, kiedy przypomnisz sobie o mnie?"
+    "text": "O czym myślisz w pierwszej kolejności, kiedy sobie o mnie przypominasz?"
   },
   {
     "id": "ROM-015",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Co Cię uspokaja, kiedy jest ciężko?"
+    "text": "Co Cię uspokaja, kiedy masz gorszy czas?"
   },
   {
     "id": "ROM-016",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Nasza ulubiona wspólna czynność?"
+    "text": "Co najbardziej lubimy robić razem?"
   },
   {
     "id": "ROM-017",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Co lubisz najbardziej w naszych rozmowach?"
+    "text": "Co najbardziej lubisz w naszych rozmowach?"
   },
   {
     "id": "ROM-018",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Idealny wieczór we dwoje – jak wygląda?"
+    "text": "Jak wygląda Twój idealny wieczór we dwoje?"
   },
   {
     "id": "ROM-019",
@@ -297,37 +497,137 @@
   {
     "id": "ROM-020",
     "category": "ROMANTYCZNE_PYTANIA",
-    "text": "Masz jakieś „nasze” miejsce, które kochasz najbardziej?"
+    "text": "Czy masz jakieś „nasze” miejsce, do którego masz największy sentyment?"
+  },
+  {
+    "id": "ROM-021",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Co pomyślałeś, jak mnie pierwszy raz zobaczyłeś?"
+  },
+  {
+    "id": "ROM-022",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Po czym najbardziej poznajesz, że Cię kocham?"
+  },
+  {
+    "id": "ROM-023",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Lubisz nasze wspólne poranki, czy wolisz wtedy chwilę dla siebie?"
+  },
+  {
+    "id": "ROM-024",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Jaki komplement ode mnie sprawił Ci największą radość?"
+  },
+  {
+    "id": "ROM-025",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Którą filmową parę najbardziej przypominamy?"
+  },
+  {
+    "id": "ROM-026",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Co mam robić, kiedy masz gorszy dzień, żeby Ci pomóc?"
+  },
+  {
+    "id": "ROM-027",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "W jakim moim ubraniu lubisz mnie najbardziej?"
+  },
+  {
+    "id": "ROM-028",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Wolisz niespodzianki czy wolisz wiedzieć wszystko z góry?"
+  },
+  {
+    "id": "ROM-029",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "W jakiej sytuacji czujesz się przy mnie najbezpieczniej?"
+  },
+  {
+    "id": "ROM-030",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Lubisz trzymać się za ręce, jak gdzieś idziemy?"
+  },
+  {
+    "id": "ROM-031",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Pamiętasz nasz pierwszy pocałunek? Jak go wspominasz?"
+  },
+  {
+    "id": "ROM-032",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Jedna cecha mojego charakteru, którą wprost uwielbiasz?"
+  },
+  {
+    "id": "ROM-033",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Jaka różnica między nami najbardziej nas dopełnia?"
+  },
+  {
+    "id": "ROM-034",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Kiedy ostatnio byłeś ze mnie dumny?"
+  },
+  {
+    "id": "ROM-035",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Jaki drobny gest z mojej strony „robi Ci dzień”?"
+  },
+  {
+    "id": "ROM-036",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Co lubisz w naszym wspólnym zasypianiu?"
+  },
+  {
+    "id": "ROM-037",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Masz nasze wspólne zdjęcie, które lubisz najbardziej?"
+  },
+  {
+    "id": "ROM-038",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "W jakich momentach najbardziej za mną tęsknisz?"
+  },
+  {
+    "id": "ROM-039",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Jaka nasza wspólna przygoda najbardziej Cię do mnie zbliżyła?"
+  },
+  {
+    "id": "ROM-040",
+    "category": "ROMANTYCZNE_PYTANIA",
+    "text": "Co dla Ciebie oznacza bycie razem „na zawsze”?"
   },
   {
     "id": "GLE-001",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Czego nauczyłeś się o sobie odkąd jesteśmy razem?"
+    "text": "Czego nowego dowiedziałeś się o sobie, odkąd jesteśmy razem?"
   },
   {
     "id": "GLE-002",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Jakich rzeczy w życiu boisz się najbardziej?"
+    "text": "Czego w życiu boisz się najbardziej?"
   },
   {
     "id": "GLE-003",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Co jest dla Ciebie absolutnie najważniejsze w związku?"
+    "text": "Co jest dla Ciebie absolutnym priorytetem w związku?"
   },
   {
     "id": "GLE-004",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Jak radzisz sobie, kiedy się kłócimy?"
+    "text": "Jak się czujesz i jak sobie radzisz, kiedy się kłócimy?"
   },
   {
     "id": "GLE-005",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Co chciałbyś zmienić albo poprawić w naszym związku?"
+    "text": "Czy jest coś, co chciałbyś zmienić lub poprawić w naszej relacji?"
   },
   {
     "id": "GLE-006",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Jakie masz największe cele życiowe?"
+    "text": "Jakie są Twoje najważniejsze cele życiowe?"
   },
   {
     "id": "GLE-007",
@@ -337,37 +637,37 @@
   {
     "id": "GLE-008",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Czego nauczyłeś się z poprzednich związków?"
+    "text": "Jaką najważniejszą lekcję wyciągnąłeś z poprzednich związków?"
   },
   {
     "id": "GLE-009",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Co chciałbyś w sobie zmienić, żeby być jeszcze lepszym dla mnie?"
+    "text": "Czy jest coś, co chciałbyś w sobie zmienić, żeby być dla mnie jeszcze lepszym partnerem?"
   },
   {
     "id": "GLE-010",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Jakie wartości rodzinne są dla Ciebie najważniejsze?"
+    "text": "Jakie wartości rodzinne są dla Ciebie kluczowe?"
   },
   {
     "id": "GLE-011",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Z czego w życiu jesteś naprawdę dumny?"
+    "text": "Z czego w swoim życiu jesteś naprawdę dumny?"
   },
   {
     "id": "GLE-012",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Jak wyobrażasz sobie nas na starość?"
+    "text": "Jak wyobrażasz sobie naszą starość?"
   },
   {
     "id": "GLE-013",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Co z przeszłości nadal Cię boli?"
+    "text": "Czy jest coś z przeszłości, co nadal sprawia Ci ból?"
   },
   {
     "id": "GLE-014",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Jakie masz zawodowe marzenia?"
+    "text": "O czym marzysz zawodowo?"
   },
   {
     "id": "GLE-015",
@@ -377,32 +677,132 @@
   {
     "id": "GLE-016",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Jakie masz granice w związku?"
+    "text": "Jakie są Twoje nieprzekraczalne granice w związku?"
   },
   {
     "id": "GLE-017",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Opisz siebie jednym zdaniem."
+    "text": "Gdybyś miał opisać siebie jednym zdaniem – jak by ono brzmiało?"
   },
   {
     "id": "GLE-018",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Jakie najważniejsze, pozytywne lekcje dało Ci życie?"
+    "text": "Jakie były najważniejsze, pozytywne lekcje, które dało Ci życie?"
   },
   {
     "id": "GLE-019",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Co chciałbyś, żebyśmy razem osiągnęli?"
+    "text": "Co chciałbyś, żebyśmy osiągnęli wspólnie?"
   },
   {
     "id": "GLE-020",
     "category": "GLEBOKIE_PYTANIA",
-    "text": "Co myślisz o kompromisach w związku?"
+    "text": "Jakie masz podejście do kompromisów w związku?"
+  },
+  {
+    "id": "GLE-021",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Gdybyś mógł cofnąć czas i zmienić jedną decyzję w życiu, co by to było?"
+  },
+  {
+    "id": "GLE-022",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Co sprawia, że czujesz, że Twoje życie ma sens?"
+  },
+  {
+    "id": "GLE-023",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Co Twoim zdaniem dyskwalifikuje kogoś jako przyjaciela?"
+  },
+  {
+    "id": "GLE-024",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Z czym lub z kim najtrudniej było Ci się w życiu pożegnać?"
+  },
+  {
+    "id": "GLE-025",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Kto miał największy wpływ na to, kim teraz jesteś?"
+  },
+  {
+    "id": "GLE-026",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Jakie Twoje niepowodzenie nauczyło Cię najwięcej?"
+  },
+  {
+    "id": "GLE-027",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Czy żałujesz jakiegoś ryzyka, którego kiedyś nie podjąłeś?"
+  },
+  {
+    "id": "GLE-028",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Co w relacji ze swoimi rodzicami chciałbyś naprawić lub zmienić?"
+  },
+  {
+    "id": "GLE-029",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Wolałbyś mieć w życiu więcej czasu czy więcej pieniędzy?"
+  },
+  {
+    "id": "GLE-030",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Kiedy ostatnio płakałeś ze wzruszenia?"
+  },
+  {
+    "id": "GLE-031",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Za co najbardziej siebie lubisz?"
+  },
+  {
+    "id": "GLE-032",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Jak radzisz sobie z krytyką – bierzesz ją mocno do siebie?"
+  },
+  {
+    "id": "GLE-033",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Czego nigdy byś nie wybaczył, nawet bliskiej osobie?"
+  },
+  {
+    "id": "GLE-034",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Z czego byłbyś w stanie zrezygnować dla dobra drugiej osoby?"
+  },
+  {
+    "id": "GLE-035",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Jakie masz podejście do spraw duchowych – czy to dla Ciebie ważne?"
+  },
+  {
+    "id": "GLE-036",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "W którym momencie życia poczułeś się tak naprawdę dorosły?"
+  },
+  {
+    "id": "GLE-037",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Czego najbardziej obawiasz się w starości?"
+  },
+  {
+    "id": "GLE-038",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Czy łatwo przychodzi Ci proszenie innych o pomoc?"
+  },
+  {
+    "id": "GLE-039",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Jak okazujesz złość i czy chciałbyś to zmienić?"
+  },
+  {
+    "id": "GLE-040",
+    "category": "GLEBOKIE_PYTANIA",
+    "text": "Co chciałbyś po sobie zostawić na świecie?"
   },
   {
     "id": "PPM-001",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Gdzie chciałbyś kiedyś mieszkać?"
+    "text": "Gdzie chciałbyś kiedyś zamieszkać?"
   },
   {
     "id": "PPM-002",
@@ -412,12 +812,12 @@
   {
     "id": "PPM-003",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Co chciałbyś osiągnąć w najbliższym roku?"
+    "text": "Co chciałbyś osiągnąć w ciągu najbliższego roku?"
   },
   {
     "id": "PPM-004",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Jak wyglądałoby Twoje życie idealne?"
+    "text": "Jak wyglądałoby Twoje idealne życie?"
   },
   {
     "id": "PPM-005",
@@ -432,12 +832,12 @@
   {
     "id": "PPM-007",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Jakie hobby chciałbyś rozkręcić na maksa?"
+    "text": "W jakie hobby chciałbyś się wkręcić na maksa?"
   },
   {
     "id": "PPM-008",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Co chciałbyś zmienić na świecie, gdybyś mógł?"
+    "text": "Co chciałbyś zmienić na świecie, gdybyś miał taką moc?"
   },
   {
     "id": "PPM-009",
@@ -447,7 +847,7 @@
   {
     "id": "PPM-010",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Co Cię najbardziej napędza do działania?"
+    "text": "Co najbardziej napędza Cię do działania?"
   },
   {
     "id": "PPM-011",
@@ -457,12 +857,12 @@
   {
     "id": "PPM-012",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Jest coś w swoim ciele, co chciałbyś zmienić?"
+    "text": "Czy jest coś w Twoim ciele, co chciałbyś zmienić?"
   },
   {
     "id": "PPM-013",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Jakie miejsca jeszcze musimy razem odwiedzić?"
+    "text": "Jakie miejsca musimy koniecznie razem odwiedzić?"
   },
   {
     "id": "PPM-014",
@@ -472,17 +872,17 @@
   {
     "id": "PPM-015",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Jakie jest Twoje finansowe marzenie?"
+    "text": "Jakie jest Twoje największe marzenie finansowe?"
   },
   {
     "id": "PPM-016",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Co w swoim życiu chciałbyś zmienić?"
+    "text": "Co chciałbyś zmienić w swoim obecnym życiu?"
   },
   {
     "id": "PPM-017",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Jakie filmy koniecznie musimy razem obejrzeć?"
+    "text": "Jakie filmy koniecznie musimy razem nadrobić?"
   },
   {
     "id": "PPM-018",
@@ -492,22 +892,122 @@
   {
     "id": "PPM-019",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Jest coś, czego się boisz, a nigdy nikomu o tym nie mówiłeś?"
+    "text": "Czy jest coś, czego się boisz, a nigdy nikomu o tym nie mówiłeś?"
   },
   {
     "id": "PPM-020",
     "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
-    "text": "Czym dla Ciebie jest prawdziwe spełnienie?"
+    "text": "Czym dla Ciebie jest poczucie spełnienia?"
+  },
+  {
+    "id": "PPM-021",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Gdyby pieniądze nie grały roli, co byś robił zawodowo?"
+  },
+  {
+    "id": "PPM-022",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "W jakim kraju chciałbyś pomieszkać przez rok na próbę?"
+  },
+  {
+    "id": "PPM-023",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Jaka umiejętność zawsze Ci imponowała i chcesz ją w końcu zdobyć?"
+  },
+  {
+    "id": "PPM-024",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Jaki sport ekstremalny chciałbyś kiedyś spróbować?"
+  },
+  {
+    "id": "PPM-025",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Co musi mieć Twój wymarzony dom (basen, biblioteka, a może ogród)?"
+  },
+  {
+    "id": "PPM-026",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Z jaką historyczną postacią chciałbyś pogadać o przyszłości świata?"
+  },
+  {
+    "id": "PPM-027",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Jaki wynalazek chciałbyś zobaczyć jeszcze za swojego życia?"
+  },
+  {
+    "id": "PPM-028",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Co jest numerem jeden na Twojej liście „rzeczy do zrobienia przed śmiercią”?"
+  },
+  {
+    "id": "PPM-029",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Czym będziesz się zajmował na emeryturze, żeby się nie nudzić?"
+  },
+  {
+    "id": "PPM-030",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Jakiego języka chciałbyś się nauczyć perfekcyjnie?"
+  },
+  {
+    "id": "PPM-031",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Trasa marzeń na road trip – gdzie by prowadziła?"
+  },
+  {
+    "id": "PPM-032",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Gdybyś otwierał własną firmę, co by to było?"
+  },
+  {
+    "id": "PPM-033",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Na czyj koncert marzysz, żeby pojechać?"
+  },
+  {
+    "id": "PPM-034",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "W jaką sprawę społeczną chciałbyś się bardziej zaangażować?"
+  },
+  {
+    "id": "PPM-035",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Co chciałbyś kolekcjonować, gdybyś miał na to miejsce i kasę?"
+  },
+  {
+    "id": "PPM-036",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Czym chciałbyś, żeby przyszłość Cię pozytywnie zaskoczyła?"
+  },
+  {
+    "id": "PPM-037",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Jaki jest Twój samochód marzeń?"
+  },
+  {
+    "id": "PPM-038",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Jak wyglądałaby Twoja idealna impreza urodzinowa?"
+  },
+  {
+    "id": "PPM-039",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Gdybyś miał napisać książkę, o czym by była?"
+  },
+  {
+    "id": "PPM-040",
+    "category": "PYTANIA_O_PRZYSZLOSC_MARZENIA",
+    "text": "Jaki jeden zdrowy nawyk chciałbyś wprowadzić na stałe?"
   },
   {
     "id": "SZC-001",
     "category": "SZCZEROSC",
-    "text": "Jaki Twój sekret, który mi zdradziłeś, jest dla Ciebie najcenniejszy?"
+    "text": "Jaki sekret, który mi zdradziłeś, jest dla Ciebie najważniejszy?"
   },
   {
     "id": "SZC-002",
     "category": "SZCZEROSC",
-    "text": "Co dla Ciebie znaczy „być wsparciem”, kiedy drugiej osobie jest ciężko?"
+    "text": "Co dla Ciebie znaczy „być dla kogoś wsparciem” w trudnych chwilach?"
   },
   {
     "id": "SZC-003",
@@ -517,7 +1017,7 @@
   {
     "id": "SZC-004",
     "category": "SZCZEROSC",
-    "text": "Myślisz, że jestem przy Tobie lojalny w 100%?"
+    "text": "Czy czujesz, że jestem wobec Ciebie w 100% lojalny?"
   },
   {
     "id": "SZC-005",
@@ -532,7 +1032,7 @@
   {
     "id": "SZC-007",
     "category": "SZCZEROSC",
-    "text": "Co czujesz, kiedy staję po Twojej stronie, nawet jak inni mają inne zdanie?"
+    "text": "Co czujesz, kiedy staję po Twojej stronie, nawet gdy inni mają odmienne zdanie?"
   },
   {
     "id": "SZC-008",
@@ -547,12 +1047,12 @@
   {
     "id": "SZC-010",
     "category": "SZCZEROSC",
-    "text": "Dlaczego akurat ze mną chcesz być?"
+    "text": "Dlaczego chcesz być właśnie ze mną?"
   },
   {
     "id": "SZC-011",
     "category": "SZCZEROSC",
-    "text": "Co czujesz, kiedy naprawdę mówię „ufam Ci”?"
+    "text": "Co czujesz, kiedy mówię Ci: „ufam Ci”?"
   },
   {
     "id": "SZC-012",
@@ -567,12 +1067,12 @@
   {
     "id": "SZC-014",
     "category": "SZCZEROSC",
-    "text": "Jak okazujesz mi wsparcie emocjonalne na co dzień?"
+    "text": "W jaki sposób okazujesz mi wsparcie emocjonalne na co dzień?"
   },
   {
     "id": "SZC-015",
     "category": "SZCZEROSC",
-    "text": "Czujesz, że jestem przy Tobie w pełni otwarty?"
+    "text": "Czy czujesz, że jestem przy Tobie w pełni otwarty?"
   },
   {
     "id": "SZC-016",
@@ -582,7 +1082,7 @@
   {
     "id": "SZC-017",
     "category": "SZCZEROSC",
-    "text": "Jakie nasze wspólne wspomnienie najbardziej pokazuje, jak o siebie dbamy?"
+    "text": "Które z naszych wspomnień najlepiej pokazuje, jak o siebie dbamy?"
   },
   {
     "id": "SZC-018",
@@ -592,72 +1092,172 @@
   {
     "id": "SZC-019",
     "category": "SZCZEROSC",
-    "text": "Jest coś, co mógłbym robić, żebyś czuł się przy mnie jeszcze lepiej?"
+    "text": "Czy jest coś, co mógłbym robić, żebyś czuł się przy mnie jeszcze lepiej?"
   },
   {
     "id": "SZC-020",
     "category": "SZCZEROSC",
-    "text": "Jak według Ciebie buduje się zaufanie – krok po kroku?"
+    "text": "Jak Twoim zdaniem buduje się zaufanie – krok po kroku?"
+  },
+  {
+    "id": "SZC-021",
+    "category": "SZCZEROSC",
+    "text": "Czy bywasz o mnie zazdrosny i w jakich sytuacjach najczęściej?"
+  },
+  {
+    "id": "SZC-022",
+    "category": "SZCZEROSC",
+    "text": "Jaka jest Twoja największa słabość, z którą walczysz?"
+  },
+  {
+    "id": "SZC-023",
+    "category": "SZCZEROSC",
+    "text": "Kiedy ostatnio skłamałeś, tylko po to, żeby kogoś nie zranić?"
+  },
+  {
+    "id": "SZC-024",
+    "category": "SZCZEROSC",
+    "text": "Czy jest coś, co robię, co Cię wkurza, ale zazwyczaj nic nie mówisz?"
+  },
+  {
+    "id": "SZC-025",
+    "category": "SZCZEROSC",
+    "text": "Czy kiedykolwiek bałeś się zaangażować w naszą relację?"
+  },
+  {
+    "id": "SZC-026",
+    "category": "SZCZEROSC",
+    "text": "O czym zazwyczaj myślisz, kiedy milczysz przy mnie?"
+  },
+  {
+    "id": "SZC-027",
+    "category": "SZCZEROSC",
+    "text": "Jakie nasze nieporozumienie najbardziej zapadło Ci w pamięć?"
+  },
+  {
+    "id": "SZC-028",
+    "category": "SZCZEROSC",
+    "text": "Czy zdarza Ci się w myślach porównywać nas do innych par?"
+  },
+  {
+    "id": "SZC-029",
+    "category": "SZCZEROSC",
+    "text": "Czego w sobie nie lubisz, a co ja w Tobie lubię?"
+  },
+  {
+    "id": "SZC-030",
+    "category": "SZCZEROSC",
+    "text": "Czego się wstydzisz przed innymi, a przede mną wcale?"
+  },
+  {
+    "id": "SZC-031",
+    "category": "SZCZEROSC",
+    "text": "Co myślisz o tym, jak rozwiązujemy nasze konflikty?"
+  },
+  {
+    "id": "SZC-032",
+    "category": "SZCZEROSC",
+    "text": "Czy czujesz, że masz w naszym związku wystarczająco dużo czasu dla siebie?"
+  },
+  {
+    "id": "SZC-033",
+    "category": "SZCZEROSC",
+    "text": "Czy jest coś z Twojej przeszłości, co wciąż wpływa na nas dzisiaj?"
+  },
+  {
+    "id": "SZC-034",
+    "category": "SZCZEROSC",
+    "text": "Czy czujesz się wystarczająco doceniany w naszym związku?"
+  },
+  {
+    "id": "SZC-035",
+    "category": "SZCZEROSC",
+    "text": "Jak myślisz, jak odbierają nas Twoi znajomi?"
+  },
+  {
+    "id": "SZC-036",
+    "category": "SZCZEROSC",
+    "text": "Jaka jest najtrudniejsza prawda o Tobie, którą powinienem znać?"
+  },
+  {
+    "id": "SZC-037",
+    "category": "SZCZEROSC",
+    "text": "Czy miałeś kiedyś chwile zwątpienia w „nas”?"
+  },
+  {
+    "id": "SZC-038",
+    "category": "SZCZEROSC",
+    "text": "Czy uważasz, że jestem dobrym słuchaczem?"
+  },
+  {
+    "id": "SZC-039",
+    "category": "SZCZEROSC",
+    "text": "Czy jesteś ze mną w pełni szczery w kwestiach finansowych?"
+  },
+  {
+    "id": "SZC-040",
+    "category": "SZCZEROSC",
+    "text": "Czy kiedyś przekroczyłem Twoją granicę nieświadomie?"
   },
   {
     "id": "INT-001",
     "category": "INTYMNE_PYTANIA",
-    "text": "Co sprawia, że czujesz się bardziej pożądana/y w łóżku?"
+    "text": "Co sprawia, że czujesz się w łóżku najbardziej pożądany/a?"
   },
   {
     "id": "INT-002",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy jest coś, o czym fantazjujesz, ale boisz się mi powiedzieć?"
+    "text": "Czy jest jakaś fantazja, o której myślisz, ale wstydzisz się mi powiedzieć?"
   },
   {
     "id": "INT-003",
     "category": "INTYMNE_PYTANIA",
-    "text": "Kiedy ostatnio naprawdę cię podnieciłam/em?"
+    "text": "Kiedy ostatnio naprawdę Cię podnieciłem/am?"
   },
   {
     "id": "INT-004",
     "category": "INTYMNE_PYTANIA",
-    "text": "Co mogłabym/mógłbym robić częściej podczas seksu?"
+    "text": "Co chciałbyś/chciałabyś, żebym robił/a częściej podczas seksu?"
   },
   {
     "id": "INT-005",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy jest coś, czego chciałabyś/chciałbyś spróbować, ale wstydzisz się zapytać?"
+    "text": "Czy jest coś, czego chciałbyś spróbować, ale głupio Ci zapytać?"
   },
   {
     "id": "INT-006",
     "category": "INTYMNE_PYTANIA",
-    "text": "Jaki był nasz najlepszy seks i co sprawiło, że taki był?"
+    "text": "Jaki był nasz najlepszy seks i co sprawiło, że był taki dobry?"
   },
   {
     "id": "INT-007",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy są miejsca na twoim ciele, których dotykam za rzadko?"
+    "text": "Czy jest jakieś miejsce na Twoim ciele, które chciałbyś, żebym dotykał częściej?"
   },
   {
     "id": "INT-008",
     "category": "INTYMNE_PYTANIA",
-    "text": "Co najbardziej kręci cię podczas gry wstępnej?"
+    "text": "Co najbardziej Cię kręci podczas gry wstępnej?"
   },
   {
     "id": "INT-009",
     "category": "INTYMNE_PYTANIA",
-    "text": "Wolisz, kiedy to ja zaczynam, czy kiedy ty przejmujesz inicjatywę?"
+    "text": "Wolisz, kiedy to ja zaczynam, czy kiedy Ty przejmujesz inicjatywę?"
   },
   {
     "id": "INT-010",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy jest coś, co robię w łóżku, a czego tak naprawdę nie lubisz?"
+    "text": "Czy jest coś, co robię w łóżku, a za czym tak naprawdę nie przepadasz?"
   },
   {
     "id": "INT-011",
     "category": "INTYMNE_PYTANIA",
-    "text": "Co najbardziej cię podnieca?"
+    "text": "Co Cię najbardziej podnieca?"
   },
   {
     "id": "INT-012",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy są dni, kiedy chcesz tylko bliskości, a w inne czegoś bardziej intensywnego?"
+    "text": "Czy miewasz dni, kiedy chcesz tylko bliskości, a w inne czegoś ostrzejszego?"
   },
   {
     "id": "INT-013",
@@ -667,22 +1267,22 @@
   {
     "id": "INT-014",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy jest jakieś miejsce, w którym chciałabyś/chciałbyś się ze mną kochać?"
+    "text": "Czy jest jakieś nietypowe miejsce, w którym chciałbyś się ze mną kochać?"
   },
   {
     "id": "INT-015",
     "category": "INTYMNE_PYTANIA",
-    "text": "Co sprawia, że czujesz się przy mnie swobodnie w łóżku?"
+    "text": "Co sprawia, że czujesz się przy mnie w łóżku swobodnie?"
   },
   {
     "id": "INT-016",
     "category": "INTYMNE_PYTANIA",
-    "text": "Jaka pozycja najbardziej Cię podnieca?"
+    "text": "Jaka pozycja najbardziej Cię kręci?"
   },
   {
     "id": "INT-017",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy jest coś, co chciałabyś/chciałbyś, żebym robił/a wolniej?"
+    "text": "Czy jest coś, co chciałbyś, żebym robił/a wolniej?"
   },
   {
     "id": "INT-018",
@@ -692,42 +1292,42 @@
   {
     "id": "INT-019",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy są jakieś zabawki albo gadżety, które chciałabyś/chciałbyś wypróbować?"
+    "text": "Czy są jakieś zabawki albo gadżety, które chciałbyś wypróbować?"
   },
   {
     "id": "INT-020",
     "category": "INTYMNE_PYTANIA",
-    "text": "Co mógłbym/mogłabym zrobić, żebyś przed seksem bardziej się rozluźnił/a?"
+    "text": "Co mógłbym zrobić, żebyś przed seksem bardziej się rozluźnił/a?"
   },
   {
     "id": "INT-021",
     "category": "INTYMNE_PYTANIA",
-    "text": "Wolisz spontaniczny seks czy taki, na który czekamy?"
+    "text": "Wolisz spontaniczny seks czy taki, na który trzeba trochę poczekać?"
   },
   {
     "id": "INT-022",
     "category": "INTYMNE_PYTANIA",
-    "text": "Jaka jest Twoja tajna fantazja, którą mógłbym/mogłabym spełnić?"
+    "text": "Jaka jest Twoja ukryta fantazja, którą mógłbym spełnić?"
   },
   {
     "id": "INT-023",
     "category": "INTYMNE_PYTANIA",
-    "text": "Co sprawia, że czujesz się seksowna/y?"
+    "text": "Co sprawia, że czujesz się seksowny/a?"
   },
   {
     "id": "INT-024",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy jest coś w naszym życiu intymnym, co chciałabyś/chciałbyś zmienić?"
+    "text": "Czy jest coś w naszym życiu intymnym, co chciałbyś zmienić?"
   },
   {
     "id": "INT-025",
     "category": "INTYMNE_PYTANIA",
-    "text": "Ile czasu na grę wstępną jest dla Ciebie idealne?"
+    "text": "Ile czasu na grę wstępną to dla Ciebie ideał?"
   },
   {
     "id": "INT-026",
     "category": "INTYMNE_PYTANIA",
-    "text": "Jakie słowa chcesz ode mnie słyszeć podczas seksu?"
+    "text": "Jakie słowa lubisz ode mnie słyszeć podczas seksu?"
   },
   {
     "id": "INT-027",
@@ -737,32 +1337,32 @@
   {
     "id": "INT-028",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy widziałaś/eś coś w filmie albo przeczytałaś/eś coś, co chciałabyś/chciałbyś wypróbować?"
+    "text": "Czy widziałeś w filmie lub czytałeś o czymś, co chciałbyś ze mną wypróbować?"
   },
   {
     "id": "INT-029",
     "category": "INTYMNE_PYTANIA",
-    "text": "Jak często chciałabyś/chciałbyś uprawiać seks?"
+    "text": "Jak często chciałbyś uprawiać seks?"
   },
   {
     "id": "INT-030",
     "category": "INTYMNE_PYTANIA",
-    "text": "Które części mojego ciała najbardziej cię kręcą?"
+    "text": "Które części mojego ciała najbardziej Cię kręcą?"
   },
   {
     "id": "INT-031",
     "category": "INTYMNE_PYTANIA",
-    "text": "Lubisz, kiedy patrzę ci w oczy podczas zbliżeń?"
+    "text": "Lubisz, kiedy patrzę Ci w oczy w trakcie zbliżenia?"
   },
   {
     "id": "INT-032",
     "category": "INTYMNE_PYTANIA",
-    "text": "Co jest Twoim ulubionym momentem, kiedy się kochamy?"
+    "text": "Jaki jest Twój ulubiony moment, kiedy się kochamy?"
   },
   {
     "id": "INT-033",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy robię coś, co kiedyś robiłem/am częściej i chciałabyś/chciałbyś, żebym do tego wrócił/a?"
+    "text": "Czy robię coś, co kiedyś robiłem częściej i chciałbyś, żebym do tego wrócił?"
   },
   {
     "id": "INT-034",
@@ -772,42 +1372,42 @@
   {
     "id": "INT-035",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czasem wolisz szybkie numerki czy raczej dłuższe zbliżenia?"
+    "text": "Wolisz czasem szybki numerek czy raczej dłuższe zbliżenia?"
   },
   {
     "id": "INT-036",
     "category": "INTYMNE_PYTANIA",
-    "text": "Jak mam dać ci znać, że mam ochotę?"
+    "text": "Jak mam Ci dać znać, że mam na Ciebie ochotę?"
   },
   {
     "id": "INT-037",
     "category": "INTYMNE_PYTANIA",
-    "text": "Jaka muzyka lub klimat najbardziej cię nakręca?"
+    "text": "Jaka muzyka lub klimat najbardziej Cię nakręca?"
   },
   {
     "id": "INT-038",
     "category": "INTYMNE_PYTANIA",
-    "text": "Chcesz, żebym bardziej mówił/a, czego chcę?"
+    "text": "Chcesz, żebym głośniej mówił/a o tym, czego chcę?"
   },
   {
     "id": "INT-039",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czy są momenty, kiedy chcesz bliskości bez seksu?"
+    "text": "Czy zdarzają Ci się momenty, kiedy pragniesz bliskości, ale bez seksu?"
   },
   {
     "id": "INT-040",
     "category": "INTYMNE_PYTANIA",
-    "text": "Kiedy byłam/em dla ciebie najbardziej seksowna/y?"
+    "text": "W jakiej sytuacji byłem/am dla Ciebie najbardziej seksowny/a?"
   },
   {
     "id": "INT-041",
     "category": "INTYMNE_PYTANIA",
-    "text": "Wolisz, kiedy jestem dominująca/y czy uległa/y?"
+    "text": "Wolisz, kiedy jestem dominujący czy uległy?"
   },
   {
     "id": "INT-042",
     "category": "INTYMNE_PYTANIA",
-    "text": "Czym mógłbym/mogłabym cię jeszcze pozytywnie zaskoczyć?"
+    "text": "Czym mógłbym Cię jeszcze pozytywnie zaskoczyć w łóżku?"
   },
   {
     "id": "INT-043",
@@ -817,36 +1417,136 @@
   {
     "id": "INT-044",
     "category": "INTYMNE_PYTANIA",
-    "text": "Jak ważna jest dla ciebie różnorodność w łóżku?"
+    "text": "Jak ważna jest dla Ciebie różnorodność w łóżku?"
   },
   {
     "id": "INT-045",
     "category": "INTYMNE_PYTANIA",
-    "text": "W które dni tygodnia masz największą ochotę?"
+    "text": "W które dni tygodnia masz zazwyczaj największą ochotę?"
   },
   {
     "id": "INT-046",
     "category": "INTYMNE_PYTANIA",
-    "text": "Co sprawia, że czujesz się pożądana/y także poza sypialnią?"
+    "text": "Co sprawia, że czujesz się pożądany/a również poza sypialnią?"
   },
   {
     "id": "INT-047",
     "category": "INTYMNE_PYTANIA",
-    "text": "Jest coś, co już próbowaliśmy i chciałabyś/chciałbyś powtórzyć?"
+    "text": "Jest coś, co już robiliśmy i chciałbyś to powtórzyć?"
   },
   {
     "id": "INT-048",
     "category": "INTYMNE_PYTANIA",
-    "text": "Gdybyś mógł/mogła zmienić jedną rzecz w naszym życiu intymnym, co by to było?"
+    "text": "Gdybyś mógł zmienić jedną rzecz w naszym życiu intymnym – co by to było?"
   },
   {
     "id": "INT-049",
     "category": "INTYMNE_PYTANIA",
-    "text": "Co sprawia, że czujesz się naprawdę adorowana/y w łóżku?"
+    "text": "Co sprawia, że czujesz się w łóżku naprawdę uwielbiany/a?"
   },
   {
     "id": "INT-050",
     "category": "INTYMNE_PYTANIA",
-    "text": "Jakiego rodzaju dotyku najbardziej teraz pragniesz?"
+    "text": "Jakiego rodzaju dotyku najbardziej teraz potrzebujesz?"
+  },
+  {
+    "id": "INT-051",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Lubisz „szybkie numerki” czy wolisz powolne rozkręcanie?"
+  },
+  {
+    "id": "INT-052",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Co myślisz o seksownej bieliźnie – kręci Cię to czy jest Ci obojętne?"
+  },
+  {
+    "id": "INT-053",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Lubisz, jak mówię do Ciebie niegrzecznie w łóżku?"
+  },
+  {
+    "id": "INT-054",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Najdziwniejsze miejsce publiczne, gdzie przeszło Ci przez myśl, żeby to zrobić?"
+  },
+  {
+    "id": "INT-055",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Lubisz masaż jako grę wstępną?"
+  },
+  {
+    "id": "INT-056",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Kręci Cię patrzenie na mnie, kiedy się przebieram?"
+  },
+  {
+    "id": "INT-057",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Lubisz, kiedy jestem głośno, czy wolisz ciszę?"
+  },
+  {
+    "id": "INT-058",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Chciałbyś kiedyś odegrać jakieś role w sypialni? Jeśli tak, to jakie?"
+  },
+  {
+    "id": "INT-059",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Seks pod prysznicem – tak czy nie?"
+  },
+  {
+    "id": "INT-060",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Wolisz, żeby Cię obudzić pieszczotami, czy usypiać po seksie?"
+  },
+  {
+    "id": "INT-061",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Jakie masz zdanie o wibratorach i gadżetach w naszej sypialni?"
+  },
+  {
+    "id": "INT-062",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Z jaką gwiazdą masz „przepustkę” na seks w swoich fantazjach?"
+  },
+  {
+    "id": "INT-063",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Lubisz, kiedy to ja przejmuję całkowitą kontrolę?"
+  },
+  {
+    "id": "INT-064",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Czego najbardziej potrzebujesz zaraz po orgazmie?"
+  },
+  {
+    "id": "INT-065",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Czy lubisz mój smak w miejscach intymnych?"
+  },
+  {
+    "id": "INT-066",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Kręci Cię seks z zaskoczenia?"
+  },
+  {
+    "id": "INT-067",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Światło zapalone, zgaszone czy może świeczki?"
+  },
+  {
+    "id": "INT-068",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Chciałbyś kiedyś nagrać nasze igraszki?"
+  },
+  {
+    "id": "INT-069",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Lubisz patrzeć w lustro, kiedy się kochamy?"
+  },
+  {
+    "id": "INT-070",
+    "category": "INTYMNE_PYTANIA",
+    "text": "Czy jesteś otwarty na eksperymenty, których jeszcze nie próbowaliśmy?"
   }
 ]
