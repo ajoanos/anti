@@ -27,26 +27,35 @@
   <script src="assets/js/momenty-guard.js"></script>
   <script>
     window.momentyAccessOk = function (expires) {
-      const root = document.getElementById('game-root');
-      if (root) {
-        root.style.display = 'block';
-        root.classList.remove('is-hidden');
+      const revealContent = () => {
+        const root = document.getElementById('game-root');
+        if (root) {
+          root.style.display = 'block';
+          root.classList.remove('is-hidden');
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token');
+        if (!token) return;
+
+        const links = document.querySelectorAll('#game-root a[href]');
+        links.forEach((link) => {
+          try {
+            const url = new URL(link.getAttribute('href'), window.location.href);
+            url.searchParams.set('token', token);
+            link.href = url.toString();
+          } catch (error) {
+            console.warn('Nie udało się zaktualizować linku gry:', error);
+          }
+        });
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', revealContent, { once: true });
+        return;
       }
 
-      const params = new URLSearchParams(window.location.search);
-      const token = params.get('token');
-      if (!token) return;
-
-      const links = document.querySelectorAll('#game-root a[href]');
-      links.forEach((link) => {
-        try {
-          const url = new URL(link.getAttribute('href'), window.location.href);
-          url.searchParams.set('token', token);
-          link.href = url.toString();
-        } catch (error) {
-          console.warn('Nie udało się zaktualizować linku gry:', error);
-        }
-      });
+      revealContent();
     };
 
     if (window.__momentyAccessConfirmed && window.__momentyAccessPending) {
