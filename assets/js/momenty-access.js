@@ -24,7 +24,12 @@
     }
 
     fetch(`${restEndpoint}?token=${encodeURIComponent(token)}&device=${encodeURIComponent(getDeviceId())}`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Status ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         if (!data || data.access !== true) {
           if (data && data.reason === 'expired') {
@@ -37,10 +42,13 @@
           return;
         }
         statusBox.remove();
-        root.style.display = '';
+        // Explicitly show the main content (CSS hides it by default until access is confirmed).
+        root.style.display = 'block';
       })
-      .catch(() => {
-        showMessage(statusBox, 'Błąd połączenia. Odśwież stronę lub spróbuj ponownie później.');
+      .catch((error) => {
+        console.error('Momenty access check failed:', error);
+        const status = error?.message ? ` (${error.message})` : '';
+        showMessage(statusBox, `Błąd połączenia${status}. Odśwież stronę lub spróbuj ponownie później.`);
       });
   });
 
