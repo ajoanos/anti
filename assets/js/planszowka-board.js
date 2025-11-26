@@ -1,10 +1,11 @@
-import { postJson, getJson } from './app.js';
+import { appendTokenToUrl, postJson, getJson } from './app.js';
 import { boardFields, finishIndex, boardConfig } from './board-data.js';
 
 const params = new URLSearchParams(window.location.search);
 const roomKey = (params.get('room_key') || '').toUpperCase();
 const localPlayerId = params.get('pid') || '';
 const localPlayerName = (params.get('name') || '').trim() || 'Ty';
+const token = params.get('token') || '';
 
 const accessPage = boardConfig && boardConfig.accessPage ? boardConfig.accessPage : 'planszowa.html';
 if (!roomKey || !localPlayerId) {
@@ -1701,8 +1702,12 @@ function buildShareUrl() {
     return '';
   }
   const invitePage = boardConfig && boardConfig.invitePage ? boardConfig.invitePage : 'planszowa-invite.html';
-  const url = new URL(invitePage, window.location.href);
+  const baseUrl = appendTokenToUrl(invitePage, token);
+  const url = new URL(baseUrl, window.location.href);
   url.searchParams.set('room_key', roomKey);
+  if (token) {
+    url.searchParams.set('token', token);
+  }
   return url.toString();
 }
 
