@@ -1,4 +1,10 @@
 (function () {
+  if (window.__momentyGuardLoaded) return;
+  window.__momentyGuardLoaded = true;
+
+  if (!document.documentElement.hasAttribute('data-guard-hidden')) {
+    document.documentElement.setAttribute('data-guard-hidden', 'true');
+  }
   const HOME_URL = 'https://sklep.allemedia.pl/anti15/index.html';
   const API_URL = 'https://sklep.allemedia.pl/wp-json/momenty/v1/check';
   const STORAGE_KEY = 'momenty_access';
@@ -73,6 +79,8 @@
   }
 
   function notifyAccess(expires, updatePendingFlag = true) {
+    document.documentElement.removeAttribute('data-guard-hidden');
+
     const expiry = Number(expires);
     window.__momentyAccessConfirmed = true;
     window.__momentyAccessExpires = expiry;
@@ -153,6 +161,8 @@
   }
 
   function renderMessage(title, body) {
+    document.documentElement.removeAttribute('data-guard-hidden');
+
     if (!document.body) {
       document.addEventListener('DOMContentLoaded', () => renderMessage(title, body), { once: true });
       return;
