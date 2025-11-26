@@ -24,6 +24,36 @@
       display: none;
     }
   </style>
+  <script src="assets/js/momenty-guard.js"></script>
+  <script>
+    window.momentyAccessOk = function (expires) {
+      const root = document.getElementById('game-root');
+      if (root) {
+        root.style.display = 'block';
+        root.classList.remove('is-hidden');
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+      if (!token) return;
+
+      const links = document.querySelectorAll('#game-root a[href]');
+      links.forEach((link) => {
+        try {
+          const url = new URL(link.getAttribute('href'), window.location.href);
+          url.searchParams.set('token', token);
+          link.href = url.toString();
+        } catch (error) {
+          console.warn('Nie udało się zaktualizować linku gry:', error);
+        }
+      });
+    };
+
+    if (window.__momentyAccessConfirmed && window.__momentyAccessPending) {
+      window.momentyAccessOk(window.__momentyAccessPending);
+      window.__momentyAccessPending = null;
+    }
+  </script>
 </head>
 
 <body class="page" data-theme="light">
@@ -108,7 +138,6 @@
 
   </div>
 
-  <script src="assets/js/momenty-access.js" data-rest-endpoint="https://sklep.allemedia.pl/wp-json/momenty/v1/check" data-shop-url="https://sklep.allemedia.pl/" data-renewal-url="https://sklep.allemedia.pl/"></script>
   <script type="module" src="assets/js/app.js"></script>
   <script type="module" src="assets/js/home.js"></script>
 </body>
