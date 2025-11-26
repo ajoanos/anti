@@ -1,4 +1,4 @@
-import { getJson, postJson } from './app.js';
+import { appendTokenToUrl, getJson, postJson } from './app.js';
 
 const EMAIL_ENDPOINT = 'api/send_positions_email.php';
 const SHARE_EMAIL_SUBJECT = 'Tinder z pozycjami – dołącz do mnie';
@@ -7,6 +7,7 @@ const params = new URLSearchParams(window.location.search);
 const roomKey = (params.get('room_key') || '').toUpperCase();
 const participantId = params.get('pid');
 const participantNumericId = Number(participantId || 0);
+const token = params.get('token') || '';
 
 const stateEndpoint = 'api/tinder_state.php';
 const startEndpoint = 'api/tinder_start.php';
@@ -76,15 +77,19 @@ let replayVotes = new Set();
 let replayReady = false;
 
 function redirectToSetup() {
-  window.location.replace('tinder-dla-sexu-room.html');
+  window.location.replace(appendTokenToUrl('tinder-dla-sexu-room.html', token));
 }
 
 function normalizeShareUrl() {
   if (!roomKey) {
     return '';
   }
-  const shareUrl = new URL('tinder-dla-sexu-invite.html', window.location.href);
+  const baseUrl = appendTokenToUrl('tinder-dla-sexu-invite.html', token);
+  const shareUrl = new URL(baseUrl, window.location.href);
   shareUrl.searchParams.set('room_key', roomKey);
+  if (token) {
+    shareUrl.searchParams.set('token', token);
+  }
   return shareUrl.toString();
 }
 

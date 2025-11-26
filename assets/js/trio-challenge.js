@@ -1,11 +1,12 @@
-import { postJson, getJson } from './app.js';
+import { appendTokenToUrl, postJson, getJson } from './app.js';
 
 const params = new URLSearchParams(window.location.search);
 const roomKey = (params.get('room_key') || '').toUpperCase();
 const localPlayerId = params.get('pid') || '';
+const token = params.get('token') || '';
 
 if (!roomKey || !localPlayerId) {
-  window.location.replace('trio-challenge.html');
+  window.location.replace(appendTokenToUrl('trio-challenge.html', token));
 }
 
 const EMAIL_ENDPOINT = 'api/send_positions_email.php';
@@ -918,8 +919,12 @@ function buildShareUrl() {
   if (!roomKey) {
     return '';
   }
-  const url = new URL('trio-challenge-invite.html', window.location.href);
+  const baseUrl = appendTokenToUrl('trio-challenge-invite.html', token);
+  const url = new URL(baseUrl, window.location.href);
   url.searchParams.set('room_key', roomKey);
+  if (token) {
+    url.searchParams.set('token', token);
+  }
   return url.toString();
 }
 

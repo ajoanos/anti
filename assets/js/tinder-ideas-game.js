@@ -1,4 +1,4 @@
-import { getJson, postJson } from './app.js';
+import { appendTokenToUrl, getJson, postJson } from './app.js';
 
 const EMAIL_ENDPOINT = 'api/send_positions_email.php';
 const SHARE_EMAIL_SUBJECT = 'Tinder wspólnych pomysłów – dołącz do mnie';
@@ -8,6 +8,7 @@ const params = new URLSearchParams(window.location.search);
 const roomKey = (params.get('room_key') || '').toUpperCase();
 const participantId = params.get('pid');
 const participantNumericId = Number(participantId || 0);
+const token = params.get('token') || '';
 
 const stateEndpoint = 'api/tinder_ideas_state.php';
 const startEndpoint = 'api/tinder_ideas_start.php';
@@ -80,15 +81,19 @@ let ideaCategories = [];
 let selectedCategories = new Set();
 
 function redirectToSetup() {
-  window.location.replace('tinder-wspolnych-pomyslow-room.html');
+  window.location.replace(appendTokenToUrl('tinder-wspolnych-pomyslow-room.html', token));
 }
 
 function normalizeShareUrl() {
   if (!roomKey) {
     return '';
   }
-  const shareUrl = new URL('tinder-wspolnych-pomyslow-invite.html', window.location.href);
+  const baseUrl = appendTokenToUrl('tinder-wspolnych-pomyslow-invite.html', token);
+  const shareUrl = new URL(baseUrl, window.location.href);
   shareUrl.searchParams.set('room_key', roomKey);
+  if (token) {
+    shareUrl.searchParams.set('token', token);
+  }
   return shareUrl.toString();
 }
 
