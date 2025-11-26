@@ -37,7 +37,8 @@
           return;
         }
         statusBox.remove();
-        root.style.display = '';
+        // Explicitly show the main content (CSS hides it by default until access is confirmed).
+        root.style.display = 'block';
       })
       .catch(() => {
         showMessage(statusBox, 'Błąd połączenia. Odśwież stronę lub spróbuj ponownie później.');
