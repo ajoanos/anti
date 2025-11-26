@@ -21,9 +21,25 @@ const elements = {
   resultFail: document.getElementById('mark-fail'),
   lastPickLabel: document.getElementById('last-pick-label'),
   reactionsList: document.getElementById('reactions-list'),
-  shareButton: document.getElementById('share-room'),
-  singleDeviceButton: document.getElementById('single-device'),
   shareBar: document.getElementById('share-bar'),
+  shareOpenButton: document.getElementById('share-open'),
+  shareLayer: document.getElementById('share-layer'),
+  shareCard: document.getElementById('share-card'),
+  shareCloseButton: document.getElementById('share-close'),
+  shareBackdrop: document.getElementById('share-backdrop'),
+  shareHint: document.getElementById('share-hint'),
+  shareShareFeedback: document.getElementById('share-share-feedback'),
+  shareLinksContainer: document.getElementById('share-links'),
+  shareCopyButton: document.getElementById('share-copy'),
+  shareQrButton: document.getElementById('share-show-qr'),
+  shareQrModal: document.getElementById('share-qr-modal'),
+  shareQrImage: document.getElementById('share-qr-image'),
+  shareQrUrl: document.getElementById('share-qr-url'),
+  shareQrClose: document.getElementById('share-qr-close'),
+  shareEmailForm: document.getElementById('share-email'),
+  shareEmailInput: document.getElementById('share-email-input'),
+  shareEmailFeedback: document.getElementById('share-email-feedback'),
+  singleDeviceButton: document.getElementById('single-device'),
   shareFeedback: document.getElementById('share-feedback'),
 };
 
@@ -40,6 +56,12 @@ const state = {
   },
   awaitingResult: false,
 };
+
+const EMAIL_ENDPOINT = 'api/send_positions_email.php';
+const SHARE_EMAIL_SUBJECT = 'Prawda czy Wyzwanie – dołącz do mnie';
+let shareLinkUrl = '';
+let shareFeedbackTimer = null;
+let shareSheetController = null;
 
 const DEFAULT_CARD_TEXT = {
   truth: elements.truthText?.textContent?.trim() || 'Kliknij, aby odsłonić prawdę.',
@@ -130,7 +152,11 @@ function bindEvents() {
   elements.resultSuccess?.addEventListener('click', () => markResult(true));
   elements.resultFail?.addEventListener('click', () => markResult(false));
 
-  elements.shareButton?.addEventListener('click', handleShare);
+  elements.shareOpenButton?.addEventListener('click', () => {
+    if (shareSheetController?.open) {
+      shareSheetController.open();
+    }
+  });
   elements.singleDeviceButton?.addEventListener('click', () => {
     state.singleDevice = true;
     elements.shareBar?.setAttribute('hidden', '');
@@ -335,27 +361,319 @@ function renderReactions() {
   elements.reactionsList.append(fragment);
 }
 
-async function handleShare() {
-  if (!elements.shareFeedback) return;
-  const url = window.location.href;
-  const title = 'Prawda czy Wyzwanie – pokój gry';
-  const text = 'Dołącz do mojego pokoju i zagrajmy w Prawda czy Wyzwanie!';
-  try {
-    if (navigator.share) {
-      await navigator.share({ title, text, url });
-      elements.shareFeedback.textContent = 'Link wysłany przez system udostępniania.';
-    } else if (navigator.clipboard) {
-      await navigator.clipboard.writeText(url);
-      elements.shareFeedback.textContent = 'Skopiowano link do schowka.';
-    } else {
-      elements.shareFeedback.textContent = 'Skopiuj link z paska adresu, aby zaprosić znajomych.';
-    }
-    elements.shareFeedback.hidden = false;
-  } catch (error) {
-    console.error(error);
-    elements.shareFeedback.textContent = 'Nie udało się udostępnić. Spróbuj ponownie.';
-    elements.shareFeedback.hidden = false;
+function buildShareUrl() {
+  const url = new URL(window.location.href);
+  url.searchParams.set('auto', '1');
+  return url.toString();
+}
+
+function buildShareMessage(url) {
+  return `Dołącz do mojego pokoju w Momenty: ${url}`;
+}
+
+function buildShareLinks(url) {
+  const message = buildShareMessage(url);
+  const encoded = encodeURIComponent(message);
+  return {
+    messenger: `https://m.me/?text=${encoded}`,
+    whatsapp: `https://wa.me/?text=${encoded}`,
+    sms: `sms:&body=${encoded}`,
+  };
+}
+
+function resetShareFeedback() {
+  if (shareFeedbackTimer) {
+    clearTimeout(shareFeedbackTimer);
+    shareFeedbackTimer = null;
   }
+  if (elements.shareShareFeedback) {
+    elements.shareShareFeedback.hidden = true;
+    elements.shareShareFeedback.textContent = '';
+    delete elements.shareShareFeedback.dataset.tone;
+  }
+  if (elements.shareEmailFeedback) {
+    elements.shareEmailFeedback.hidden = true;
+    elements.shareEmailFeedback.textContent = '';
+    delete elements.shareEmailFeedback.dataset.tone;
+  }
+}
+
+function initializeShareSheet({
+  bar,
+  openButton,
+  layer,
+  card,
+  closeButton,
+  backdrop,
+}) {
+  if (!layer || !card || !openButton || !closeButton) {
+    if (bar) bar.hidden = true;
+    return null;
+  }
+
+  layer.hidden = false;
+  layer.dataset.open = 'false';
+  layer.setAttribute('aria-hidden', 'true');
+  if (!card.hasAttribute('tabindex')) {
+    card.tabIndex = -1;
+  }
+  openButton.disabled = true;
+  openButton.setAttribute('aria-expanded', 'false');
+  openButton.setAttribute('tabindex', '-1');
+
+  let activeTrigger = null;
+
+  const close = () => {
+    if (layer.dataset.open !== 'true') return;
+    layer.dataset.open = 'false';
+    layer.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('share-layer-open');
+    openButton.setAttribute('aria-expanded', 'false');
+    resetShareFeedback();
+    if (activeTrigger && typeof activeTrigger.focus === 'function') {
+      activeTrigger.focus({ preventScroll: true });
+    }
+    activeTrigger = null;
+  };
+
+  const open = () => {
+    if (layer.dataset.open === 'true' || openButton.disabled) return;
+    activeTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : openButton;
+    layer.dataset.open = 'true';
+    layer.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('share-layer-open');
+    openButton.setAttribute('aria-expanded', 'true');
+    requestAnimationFrame(() => card.focus({ preventScroll: true }));
+  };
+
+  openButton.addEventListener('click', () => {
+    if (layer.dataset.open === 'true') {
+      close();
+    } else {
+      open();
+    }
+  });
+
+  closeButton.addEventListener('click', close);
+  backdrop?.addEventListener('click', close);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && layer.dataset.open === 'true') {
+      event.preventDefault();
+      close();
+    }
+  });
+
+  return { open, close };
+}
+
+function closeShareSheet() {
+  if (shareSheetController?.close) {
+    shareSheetController.close();
+    return;
+  }
+  if (!elements.shareLayer) return;
+  elements.shareLayer.dataset.open = 'false';
+  elements.shareLayer.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('share-layer-open');
+  elements.shareOpenButton?.setAttribute('aria-expanded', 'false');
+  resetShareFeedback();
+}
+
+function showShareFeedback(message, tone = 'success') {
+  if (!elements.shareShareFeedback) return;
+  elements.shareShareFeedback.hidden = false;
+  elements.shareShareFeedback.dataset.tone = tone;
+  elements.shareShareFeedback.textContent = message;
+  if (shareFeedbackTimer) {
+    clearTimeout(shareFeedbackTimer);
+  }
+  shareFeedbackTimer = window.setTimeout(() => {
+    if (!elements.shareShareFeedback) return;
+    elements.shareShareFeedback.hidden = true;
+    elements.shareShareFeedback.textContent = '';
+    delete elements.shareShareFeedback.dataset.tone;
+  }, 4000);
+}
+
+function initializeShareChannels() {
+  const hasLink = Boolean(shareLinkUrl);
+
+  if (elements.shareCopyButton) {
+    elements.shareCopyButton.hidden = !hasLink;
+    elements.shareCopyButton.disabled = !hasLink;
+  }
+
+  if (elements.shareQrButton) {
+    elements.shareQrButton.hidden = !hasLink;
+    elements.shareQrButton.disabled = !hasLink;
+  }
+
+  if (elements.shareHint && !hasLink) {
+    elements.shareHint.textContent = 'Nie udało się przygotować linku do udostępnienia. Odśwież stronę i spróbuj ponownie.';
+  }
+
+  if (!elements.shareLinksContainer) {
+    configureShareEmailForm(hasLink);
+    return;
+  }
+
+  const links = elements.shareLinksContainer.querySelectorAll('[data-share-channel]');
+  links.forEach((link) => {
+    const anchor = link instanceof HTMLAnchorElement ? link : link.querySelector('a');
+    if (!anchor) return;
+    anchor.classList.add('share-link--disabled');
+    anchor.setAttribute('tabindex', '-1');
+    anchor.setAttribute('aria-disabled', 'true');
+  });
+
+  if (!hasLink) {
+    configureShareEmailForm(false);
+    return;
+  }
+
+  const hrefs = buildShareLinks(shareLinkUrl);
+  links.forEach((link) => {
+    const anchor = link instanceof HTMLAnchorElement ? link : link.querySelector('a');
+    if (!(anchor instanceof HTMLAnchorElement)) return;
+    const channel = anchor.dataset.shareChannel || '';
+    const target = hrefs[channel] || shareLinkUrl;
+    anchor.href = target;
+    anchor.classList.remove('share-link--disabled');
+    anchor.removeAttribute('aria-disabled');
+    anchor.removeAttribute('tabindex');
+  });
+
+  configureShareEmailForm(true);
+}
+
+function configureShareEmailForm(enabled) {
+  if (!elements.shareEmailForm || !(elements.shareEmailInput instanceof HTMLInputElement)) {
+    return;
+  }
+  elements.shareEmailForm.hidden = !enabled;
+  elements.shareEmailForm.dataset.shareUrl = enabled ? shareLinkUrl : '';
+  elements.shareEmailForm.dataset.shareMessage = enabled ? buildShareMessage(shareLinkUrl) : '';
+  if (!enabled) {
+    elements.shareEmailInput.value = '';
+  }
+  if (elements.shareEmailFeedback) {
+    elements.shareEmailFeedback.hidden = true;
+    elements.shareEmailFeedback.textContent = '';
+    delete elements.shareEmailFeedback.dataset.tone;
+  }
+}
+
+function copyShareLink() {
+  if (!shareLinkUrl) return;
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(shareLinkUrl)
+      .then(() => showShareFeedback('Skopiowano link do schowka.'))
+      .catch(() => showShareFeedback('Nie udało się skopiować linku. Spróbuj ponownie.', 'error'));
+  } else {
+    const success = window.prompt('Skopiuj link do pokoju', shareLinkUrl);
+    if (success !== null) {
+      showShareFeedback('Skopiuj link z okna dialogowego.');
+    }
+  }
+}
+
+function showShareQr() {
+  if (!shareLinkUrl || !elements.shareQrModal || !elements.shareQrImage || !elements.shareQrUrl) {
+    showShareFeedback('Nie udało się przygotować kodu QR.', 'error');
+    return;
+  }
+  const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(shareLinkUrl)}`;
+  elements.shareQrImage.src = qrSrc;
+  elements.shareQrUrl.href = shareLinkUrl;
+  elements.shareQrModal.hidden = false;
+  elements.shareQrModal.setAttribute('aria-hidden', 'false');
+}
+
+function hideShareQr() {
+  if (!elements.shareQrModal) return;
+  elements.shareQrModal.hidden = true;
+  elements.shareQrModal.setAttribute('aria-hidden', 'true');
+}
+
+function bindShareEvents() {
+  if (elements.shareCopyButton) {
+    elements.shareCopyButton.addEventListener('click', copyShareLink);
+  }
+  if (elements.shareQrButton) {
+    elements.shareQrButton.addEventListener('click', showShareQr);
+  }
+  if (elements.shareQrClose) {
+    elements.shareQrClose.addEventListener('click', () => {
+      hideShareQr();
+      elements.shareQrButton?.focus({ preventScroll: true });
+    });
+  }
+  elements.shareQrModal?.addEventListener('click', (event) => {
+    if (event.target === elements.shareQrModal) {
+      hideShareQr();
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !elements.shareQrModal?.hidden) {
+      hideShareQr();
+    }
+  });
+
+  if (elements.shareEmailForm && elements.shareEmailInput instanceof HTMLInputElement) {
+    elements.shareEmailForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!elements.shareEmailInput.checkValidity()) {
+        elements.shareEmailInput.reportValidity();
+        return;
+      }
+      const email = elements.shareEmailInput.value.trim();
+      if (!email) {
+        elements.shareEmailInput.reportValidity();
+        return;
+      }
+      const shareUrl = elements.shareEmailForm.dataset.shareUrl || shareLinkUrl;
+      const message = elements.shareEmailForm.dataset.shareMessage || buildShareMessage(shareUrl);
+      try {
+        if (elements.shareEmailFeedback) {
+          elements.shareEmailFeedback.hidden = false;
+          elements.shareEmailFeedback.textContent = 'Wysyłamy wiadomość…';
+          delete elements.shareEmailFeedback.dataset.tone;
+        }
+        const response = await fetch(EMAIL_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            partner_email: email,
+            share_url: shareUrl,
+            subject: SHARE_EMAIL_SUBJECT,
+            message,
+          }),
+        });
+        if (!response.ok) {
+          throw new Error('Nie udało się wysłać e-maila');
+        }
+        if (elements.shareEmailFeedback) {
+          elements.shareEmailFeedback.hidden = false;
+          elements.shareEmailFeedback.dataset.tone = 'success';
+          elements.shareEmailFeedback.textContent = 'Wiadomość wysłana! Powiedz partnerowi, żeby zajrzał do skrzynki.';
+        }
+        elements.shareEmailInput.value = '';
+      } catch (error) {
+        console.error(error);
+        if (elements.shareEmailFeedback) {
+          elements.shareEmailFeedback.hidden = false;
+          elements.shareEmailFeedback.dataset.tone = 'error';
+          elements.shareEmailFeedback.textContent = 'Nie udało się wysłać wiadomości. Spróbuj ponownie.';
+        }
+      }
+    });
+  }
+
+  elements.shareLayer?.addEventListener('transitionend', (event) => {
+    if (event.target === elements.shareLayer && elements.shareLayer.dataset.open === 'false') {
+      resetShareFeedback();
+    }
+  });
 }
 
 function setStatus(message, tone = 'info') {
@@ -367,6 +685,21 @@ function setStatus(message, tone = 'info') {
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle(elements.themeToggle);
   if (!ensureAccess()) return;
+  shareLinkUrl = buildShareUrl();
+  shareSheetController = initializeShareSheet({
+    bar: elements.shareBar,
+    openButton: elements.shareOpenButton,
+    layer: elements.shareLayer,
+    card: elements.shareCard,
+    closeButton: elements.shareCloseButton,
+    backdrop: elements.shareBackdrop,
+  });
+  if (elements.shareOpenButton) {
+    elements.shareOpenButton.disabled = false;
+    elements.shareOpenButton.removeAttribute('tabindex');
+  }
+  initializeShareChannels();
+  bindShareEvents();
   renderCategories();
   bindEvents();
   setStatus('Najpierw zaznacz kategorie, potem kliknij prawdę lub wyzwanie, aby odsłonić kartę.', 'muted');

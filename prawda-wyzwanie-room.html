@@ -126,11 +126,57 @@
     </section>
 
     <div class="share-bar" id="share-bar">
-      <button class="btn btn--primary share-bar__button" type="button" id="share-room">Udostępnij pokój</button>
+      <button class="btn btn--primary share-bar__button" type="button" id="share-open" aria-haspopup="dialog"
+        aria-controls="share-card" aria-expanded="false">Udostępnij pokój</button>
       <button class="btn btn--ghost share-bar__button" type="button" id="single-device">Gramy na jednym
         urządzeniu</button>
     </div>
     <p class="form__hint" id="share-feedback" hidden></p>
+
+    <section class="share-layer" id="share-layer" data-open="false" aria-hidden="true" hidden>
+      <div class="share-layer__backdrop" id="share-backdrop"></div>
+      <section class="card card--share share-layer__panel" id="share-card" role="dialog" aria-modal="true"
+        aria-labelledby="share-card-title" tabindex="-1">
+        <div class="share-card__header">
+          <h2 id="share-card-title">Udostępnij pokój</h2>
+          <button type="button" class="share-card__close" id="share-close">
+            <span aria-hidden="true">×</span>
+            <span class="visually-hidden">Zamknij okno „Udostępnij pokój”</span>
+          </button>
+        </div>
+        <div class="share-card__body">
+          <p id="share-hint">Wyślij partnerowi link, aby dołączył do pokoju.</p>
+          <p class="share-feedback" id="share-share-feedback" hidden role="status" aria-live="polite"></p>
+          <div class="share__actions">
+            <button type="button" class="btn btn--ghost" id="share-copy" disabled>Kopiuj link</button>
+            <button type="button" class="btn btn--ghost" id="share-show-qr" disabled>Zeskanuj QR dla partnera</button>
+            <div class="share-links" id="share-links">
+              <a class="share-link" data-share-channel="messenger" href="#" aria-disabled="true" tabindex="-1">Messenger</a>
+              <a class="share-link" data-share-channel="whatsapp" href="#" aria-disabled="true" tabindex="-1">WhatsApp</a>
+              <a class="share-link" data-share-channel="sms" href="#" aria-disabled="true" tabindex="-1">SMS</a>
+            </div>
+          </div>
+          <form class="share-email" id="share-email">
+            <label class="share-email__field" for="share-email-input">
+              <span class="share-email__label">Adres e-mail partnera</span>
+              <input type="email" id="share-email-input" name="partner_email" placeholder="partner@przyklad.pl"
+                autocomplete="email" required />
+            </label>
+            <button type="submit" class="btn btn--primary">Wyślij</button>
+            <p class="share-email__feedback" id="share-email-feedback" hidden role="status"></p>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <div id="share-qr-modal" class="qr-modal" hidden aria-hidden="true">
+      <div class="qr-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="share-qr-title">
+        <h2 id="share-qr-title">Zeskanuj kod QR</h2>
+        <img id="share-qr-image" class="qr-modal__image" alt="Kod QR prowadzący do pokoju" loading="lazy" />
+        <a id="share-qr-url" class="qr-modal__link" href="#" target="_blank" rel="noreferrer">Otwórz link</a>
+        <button id="share-qr-close" class="qr-modal__close" type="button">Zamknij</button>
+      </div>
+    </div>
 
     <footer class="footer">
       <nav class="footer__nav">
