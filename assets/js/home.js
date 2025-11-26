@@ -1,3 +1,4 @@
+import { appendTokenToUrl, ACTIVE_TOKEN } from './app.js';
 import { games } from './games-data.js';
 
 // Utils
@@ -87,7 +88,7 @@ function renderHeroGame() {
     heroIcon.textContent = randomGame.icon;
     heroTitle.textContent = randomGame.title;
     heroDesc.textContent = randomGame.desc;
-    heroLink.href = randomGame.link;
+    heroLink.href = appendTokenToUrl(randomGame.link, ACTIVE_TOKEN);
 
     updateGreeting();
 }
@@ -99,7 +100,7 @@ function renderGameGrid() {
     grid.innerHTML = ''; // Clear existing content
     games.forEach(game => {
         const card = document.createElement('a');
-        card.href = game.link;
+        card.href = appendTokenToUrl(game.link, ACTIVE_TOKEN);
         card.className = 'v2-grid-item';
         card.dataset.category = game.category;
 
