@@ -220,6 +220,8 @@ function createScratchCard() {
 
   window.addEventListener('resize', resizeCanvas);
   image.addEventListener('load', () => {
+    // Ensure the canvas matches the image/container size before drawing the steam layer
+    resizeCanvas();
     drawSteamLayer();
   });
   image.addEventListener('error', () => {
