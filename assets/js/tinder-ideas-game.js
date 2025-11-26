@@ -1060,6 +1060,8 @@ async function startPolling() {
   }
 }
 
+let initialized = false;
+
 function init() {
   if (!roomKey || !participantId) {
     redirectToSetup();
@@ -1080,10 +1082,29 @@ function init() {
   startPolling();
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
+function initWhenReady() {
+  if (initialized) {
+    return;
+  }
+  const runInit = () => {
+    if (initialized) {
+      return;
+    }
+    initialized = true;
+    init();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runInit, { once: true });
+  } else {
+    runInit();
+  }
+}
+
+window.initMomentyGame = initWhenReady;
+
+if (window.__momentyAccessConfirmed) {
+  initWhenReady();
 }
 
 window.addEventListener('beforeunload', () => {
