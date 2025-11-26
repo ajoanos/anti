@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Momenty Access
  * Description: Integrates WooCommerce purchases with external game access tokens.
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: Allemedia / Momenty
  */
 

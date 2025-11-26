@@ -22,6 +22,10 @@ class Momenty_Access_Core {
     const OPTION_WELCOME_TEMPLATE   = 'momenty_welcome_template';
     const OPTION_REMINDER_TEMPLATE  = 'momenty_reminder_template';
     const OPTION_CRON_HOOK          = 'momenty_access_reminder_event';
+    const OPTION_DEVICE_LIMIT       = 'momenty_device_limit';
+    const OPTION_DEVICES_CRON_HOOK  = 'momenty_access_devices_reset_event';
+
+    const DEVICE_LOG_LIMIT = 100;
 
     /**
      * Singleton instance.
@@ -57,6 +61,9 @@ class Momenty_Access_Core {
 
         // CRON – przypomnienia.
         add_action( self::OPTION_CRON_HOOK, array( $this, 'send_reminders' ) );
+
+        // CRON – automatyczny reset urządzeń.
+        add_action( self::OPTION_DEVICES_CRON_HOOK, array( $this, 'reset_all_devices' ) );
     }
 
     /**
@@ -65,6 +72,10 @@ class Momenty_Access_Core {
     public static function activate() {
         if ( ! wp_next_scheduled( self::OPTION_CRON_HOOK ) ) {
             wp_schedule_event( time() + DAY_IN_SECONDS, 'daily', self::OPTION_CRON_HOOK );
+        }
+
+        if ( ! wp_next_scheduled( self::OPTION_DEVICES_CRON_HOOK ) ) {
+            wp_schedule_event( time() + DAY_IN_SECONDS, 'daily', self::OPTION_DEVICES_CRON_HOOK );
         }
     }
 
@@ -75,6 +86,11 @@ class Momenty_Access_Core {
         $timestamp = wp_next_scheduled( self::OPTION_CRON_HOOK );
         if ( $timestamp ) {
             wp_unschedule_event( $timestamp, self::OPTION_CRON_HOOK );
+        }
+
+        $device_timestamp = wp_next_scheduled( self::OPTION_DEVICES_CRON_HOOK );
+        if ( $device_timestamp ) {
+            wp_unschedule_event( $device_timestamp, self::OPTION_DEVICES_CRON_HOOK );
         }
     }
 
@@ -112,6 +128,15 @@ class Momenty_Access_Core {
             'momenty-access-subscribers',
             array( $this, 'render_subscribers_page' )
         );
+
+        add_submenu_page(
+            'momenty-access',
+            'Urządzenia użytkownika',
+            'Urządzenia użytkownika',
+            'manage_options',
+            'momenty-access-devices',
+            array( $this, 'render_devices_page' )
+        );
     }
 
     /**
@@ -134,6 +159,9 @@ class Momenty_Access_Core {
 
         $access_days = isset( $_POST[ self::OPTION_ACCESS_DAYS ] ) ? max( 1, intval( $_POST[ self::OPTION_ACCESS_DAYS ] ) ) : 30;
         update_option( self::OPTION_ACCESS_DAYS, $access_days );
+
+        $device_limit = isset( $_POST[ self::OPTION_DEVICE_LIMIT ] ) ? max( 1, intval( $_POST[ self::OPTION_DEVICE_LIMIT ] ) ) : 2;
+        update_option( self::OPTION_DEVICE_LIMIT, $device_limit );
 
         $games_url = isset( $_POST[ self::OPTION_GAMES_URL ] ) ? esc_url_raw( $_POST[ self::OPTION_GAMES_URL ] ) : '';
         update_option( self::OPTION_GAMES_URL, $games_url );
@@ -166,6 +194,7 @@ class Momenty_Access_Core {
         $products         = function_exists( 'wc_get_products' ) ? wc_get_products( array( 'limit' => -1 ) ) : array();
         $allowed_products = get_option( self::OPTION_PRODUCTS_ALLOWED, array() );
         $access_days      = (int) get_option( self::OPTION_ACCESS_DAYS, 30 );
+        $device_limit     = (int) get_option( self::OPTION_DEVICE_LIMIT, 2 );
         $games_url        = esc_url( get_option( self::OPTION_GAMES_URL, '' ) );
         $reminder_days    = (int) get_option( self::OPTION_REMINDER_DAYS, 5 );
         $welcome_template = (string) get_option( self::OPTION_WELCOME_TEMPLATE, '' );
@@ -213,6 +242,13 @@ class Momenty_Access_Core {
                        value="<?php echo esc_attr( $access_days ); ?>"
                        min="1" />
 
+                <h2>Limit urządzeń na token</h2>
+                <input type="number"
+                       name="<?php echo esc_attr( self::OPTION_DEVICE_LIMIT ); ?>"
+                       value="<?php echo esc_attr( $device_limit ); ?>"
+                       min="1" />
+                <p class="description">Domyślnie 2. Przekroczenie limitu blokuje dostęp.</p>
+
                 <h2>URL strony z grami</h2>
                 <input type="url"
                        class="regular-text"
@@ -243,6 +279,158 @@ class Momenty_Access_Core {
             </form>
         </div>
         <?php
+    }
+
+    /* -------------------------------------------------------------------------
+     *  USER DEVICES
+     * ---------------------------------------------------------------------- */
+
+    /**
+     * Render single user devices page.
+     */
+    public function render_devices_page() {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            return;
+        }
+
+        $message = '';
+        if ( 'POST' === $_SERVER['REQUEST_METHOD'] && isset( $_POST['momenty_devices_nonce'] ) ) {
+            if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['momenty_devices_nonce'] ) ), 'momenty_devices_reset' ) ) {
+                $user_id = isset( $_POST['user_id'] ) ? intval( $_POST['user_id'] ) : 0;
+                if ( $user_id ) {
+                    $this->reset_user_devices( $user_id, 'manual' );
+                    $message = __( 'Urządzenia zostały zresetowane.', 'momenty-access' );
+                }
+            }
+        }
+
+        $search       = isset( $_GET['s'] ) ? sanitize_text_field( wp_unslash( $_GET['s'] ) ) : '';
+        $found_user   = $search ? $this->find_user_by_email_or_token( $search ) : null;
+        $devices      = $found_user ? $this->get_user_devices( $found_user->ID ) : array();
+        $logs         = $found_user ? $this->get_device_logs( $found_user->ID ) : array();
+        $user_token   = $found_user ? get_user_meta( $found_user->ID, 'momenty_token', true ) : '';
+        $last_reset   = $found_user ? (int) get_user_meta( $found_user->ID, 'momenty_devices_reset_at', true ) : 0;
+        ?>
+        <div class="wrap">
+            <h1>Urządzenia użytkownika</h1>
+
+            <form method="get" style="margin-bottom: 15px;">
+                <input type="hidden" name="page" value="momenty-access-devices" />
+                <input type="search" name="s" value="<?php echo esc_attr( $search ); ?>" placeholder="E-mail lub token" />
+                <button class="button">Szukaj</button>
+            </form>
+
+            <?php if ( $message ) : ?>
+                <div class="notice notice-success"><p><?php echo esc_html( $message ); ?></p></div>
+            <?php endif; ?>
+
+            <?php if ( ! $search ) : ?>
+                <p>Wpisz e-mail lub token użytkownika, aby podejrzeć urządzenia.</p>
+            <?php elseif ( ! $found_user ) : ?>
+                <p>Nie znaleziono użytkownika.</p>
+            <?php else : ?>
+                <h2><?php echo esc_html( $found_user->user_email ); ?></h2>
+                <p>Token: <code><?php echo esc_html( $user_token ); ?></code></p>
+                <p>Ostatni reset urządzeń: <?php echo $last_reset ? esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $last_reset ) ) : '&mdash;'; ?></p>
+
+                <form method="post" style="margin: 10px 0;">
+                    <?php wp_nonce_field( 'momenty_devices_reset', 'momenty_devices_nonce' ); ?>
+                    <input type="hidden" name="user_id" value="<?php echo esc_attr( $found_user->ID ); ?>" />
+                    <button class="button button-secondary" type="submit">Resetuj urządzenia</button>
+                </form>
+
+                <h3>Aktywne urządzenia</h3>
+                <?php if ( empty( $devices ) ) : ?>
+                    <p>Brak zarejestrowanych urządzeń.</p>
+                <?php else : ?>
+                    <table class="widefat fixed striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>IP</th>
+                            <th>Dodane</th>
+                            <th>Ostatnie użycie</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ( $devices as $device ) : ?>
+                            <tr>
+                                <td><?php echo esc_html( $device['id'] ); ?></td>
+                                <td><?php echo esc_html( $device['ip'] ?? '' ); ?></td>
+                                <td><?php echo ! empty( $device['first_seen'] ) ? esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), (int) $device['first_seen'] ) ) : '&mdash;'; ?></td>
+                                <td><?php echo ! empty( $device['last_seen'] ) ? esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), (int) $device['last_seen'] ) ) : '&mdash;'; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+
+                <h3>Log wejść i prób oszustw</h3>
+                <?php if ( empty( $logs ) ) : ?>
+                    <p>Brak logów.</p>
+                <?php else : ?>
+                    <table class="widefat fixed striped">
+                        <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Urządzenie</th>
+                            <th>IP</th>
+                            <th>Zdarzenie</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ( array_reverse( $logs ) as $log ) : ?>
+                            <tr>
+                                <td><?php echo esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), (int) $log['time'] ) ); ?></td>
+                                <td><?php echo esc_html( $log['device'] ); ?></td>
+                                <td><?php echo esc_html( $log['ip'] ); ?></td>
+                                <td><?php echo esc_html( $this->describe_device_event( $log['event'] ) ); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            <?php endif; ?>
+        </div>
+        <?php
+    }
+
+    private function find_user_by_email_or_token( $search ) {
+        $user = get_user_by( 'email', $search );
+        if ( $user ) {
+            return $user;
+        }
+
+        return $this->find_user_by_token( $search );
+    }
+
+    private function get_user_devices( $user_id ) {
+        $devices = get_user_meta( $user_id, 'momenty_devices', true );
+        return is_array( $devices ) ? $devices : array();
+    }
+
+    private function get_device_logs( $user_id ) {
+        $logs = get_user_meta( $user_id, 'momenty_device_logs', true );
+        return is_array( $logs ) ? $logs : array();
+    }
+
+    private function describe_device_event( $event ) {
+        switch ( $event ) {
+            case 'granted_new':
+                return 'Dostęp przyznany – nowe urządzenie';
+            case 'granted_existing':
+                return 'Dostęp przyznany – znane urządzenie';
+            case 'denied_limit':
+                return 'Odmowa – przekroczono limit urządzeń';
+            case 'reset_manual':
+                return 'Reset urządzeń (ręczny)';
+            case 'reset_auto':
+                return 'Reset urządzeń (automatyczny)';
+            case 'expired':
+                return 'Odmowa – wygasły dostęp';
+        }
+
+        return ucfirst( $event );
     }
 
     /**
@@ -621,6 +809,95 @@ class Momenty_Access_Core {
     }
 
     /* -------------------------------------------------------------------------
+     *  DEVICE LIMIT & LOGIC
+     * ---------------------------------------------------------------------- */
+
+    /**
+     * Register device usage and enforce limit.
+     */
+    private function register_device_usage( $user_id, $device_id ) {
+        $device_id = $device_id ? substr( preg_replace( '/[^a-zA-Z0-9-_]/', '', $device_id ), 0, 128 ) : 'device-unknown';
+
+        $this->maybe_reset_devices( $user_id );
+
+        $devices = $this->get_user_devices( $user_id );
+        $ip      = $this->get_request_ip();
+
+        foreach ( $devices as &$device ) {
+            if ( $device['id'] === $device_id ) {
+                $device['last_seen'] = time();
+                $device['ip']        = $ip;
+                update_user_meta( $user_id, 'momenty_devices', $devices );
+                $this->log_device_event( $user_id, $device_id, 'granted_existing', $ip );
+                return array( 'success' => true );
+            }
+        }
+
+        $limit = (int) get_option( self::OPTION_DEVICE_LIMIT, 2 );
+        if ( $limit > 0 && count( $devices ) >= $limit ) {
+            $this->log_device_event( $user_id, $device_id, 'denied_limit', $ip );
+            return array(
+                'success' => false,
+                'reason'  => 'too_many_devices',
+            );
+        }
+
+        $devices[] = array(
+            'id'         => $device_id,
+            'first_seen' => time(),
+            'last_seen'  => time(),
+            'ip'         => $ip,
+        );
+        update_user_meta( $user_id, 'momenty_devices', $devices );
+        $this->log_device_event( $user_id, $device_id, 'granted_new', $ip );
+
+        return array( 'success' => true );
+    }
+
+    private function log_device_event( $user_id, $device_id, $event, $ip = '' ) {
+        $logs   = $this->get_device_logs( $user_id );
+        $logs[] = array(
+            'time'   => time(),
+            'device' => $device_id,
+            'ip'     => $ip,
+            'event'  => $event,
+        );
+
+        if ( count( $logs ) > self::DEVICE_LOG_LIMIT ) {
+            $logs = array_slice( $logs, -1 * self::DEVICE_LOG_LIMIT );
+        }
+
+        update_user_meta( $user_id, 'momenty_device_logs', $logs );
+    }
+
+    private function reset_user_devices( $user_id, $mode = 'manual' ) {
+        delete_user_meta( $user_id, 'momenty_devices' );
+        update_user_meta( $user_id, 'momenty_devices_reset_at', time() );
+        $this->log_device_event( $user_id, 'all', 'reset_' . $mode, $this->get_request_ip() );
+    }
+
+    public function reset_all_devices() {
+        $users = $this->get_all_subscribers();
+        foreach ( $users as $user ) {
+            if ( $user_obj = get_user_by( 'ID', $user['ID'] ) ) {
+                $this->maybe_reset_devices( $user_obj->ID );
+            }
+        }
+    }
+
+    private function maybe_reset_devices( $user_id ) {
+        $last_reset = (int) get_user_meta( $user_id, 'momenty_devices_reset_at', true );
+        if ( ! $last_reset || $last_reset < ( time() - DAY_IN_SECONDS ) ) {
+            $this->reset_user_devices( $user_id, 'auto' );
+        }
+    }
+
+    private function get_request_ip() {
+        $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+        return $ip ? sanitize_text_field( wp_unslash( $ip ) ) : '';
+    }
+
+    /* -------------------------------------------------------------------------
      *  REST API
      * ---------------------------------------------------------------------- */
 
@@ -656,6 +933,7 @@ class Momenty_Access_Core {
      */
     public function rest_check_access( WP_REST_Request $request ) {
         $token = sanitize_text_field( $request->get_param( 'token' ) );
+        $device = sanitize_text_field( $request->get_param( 'device' ) );
         $user  = $this->find_user_by_token( $token );
 
         if ( ! $user ) {
@@ -664,13 +942,26 @@ class Momenty_Access_Core {
 
         $expires = (int) get_user_meta( $user->ID, 'momenty_expires', true );
         if ( $expires && $expires >= time() ) {
+            $device_result = $this->register_device_usage( $user->ID, $device );
+
+            if ( isset( $device_result['success'] ) && true === $device_result['success'] ) {
+                return rest_ensure_response(
+                    array(
+                        'access'  => true,
+                        'expires' => $expires,
+                    )
+                );
+            }
+
             return rest_ensure_response(
                 array(
-                    'access'  => true,
-                    'expires' => $expires,
+                    'access' => false,
+                    'reason' => $device_result['reason'] ?? 'too_many_devices',
                 )
             );
         }
+
+        $this->log_device_event( $user->ID, $device ? $device : 'device-unknown', 'expired', $this->get_request_ip() );
 
         return rest_ensure_response(
             array(
