@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex" />
-  <title>5 • 7 • 10 sekund – Hasło dostępu</title>
+  <title>5 • 7 • 10 sekund – Start gry</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,7 +25,7 @@
         </a>
         <div class="hero__text">
           <h1>5 • 7 • 10 sekund</h1>
-          <p>Podaj hasło, aby odblokować nową grę z błyskawicznymi pytaniami i licznikiem czasu.</p>
+          <p>Przygotujemy dla Was pokój na podstawie tokenu z linku.</p>
         </div>
         <details class="game-switcher">
           <summary class="game-switcher__toggle">Wybierz grę</summary>
@@ -52,20 +52,16 @@
     </header>
 
     <section class="card card--password animate-in delay-200" id="password-card">
-      <h2>Podaj hasło dostępu</h2>
+      <h2>Wejdź do gry</h2>
+      <p>Wystarczy token – przygotujemy pokój automatycznie.</p>
       <form id="password-form" class="form form--inline" data-success="5-7-10-room.html"
         data-storage-key="momenty.timer.access">
-        <label class="form__field">
-          <span>Hasło</span>
-          <input type="password" id="access-password" name="access_password" placeholder="••••"
-            autocomplete="current-password" required />
-        </label>
         <div class="form__actions">
-          <button type="submit" class="btn btn--primary">Potwierdź</button>
+          <button type="submit" class="btn btn--primary">Zagraj teraz</button>
           <button type="button" class="btn btn--ghost" id="password-cancel" data-back="index.html">Wróć</button>
         </div>
       </form>
-      <p class="form__hint" id="password-error" hidden>Niepoprawne hasło. Spróbuj ponownie.</p>
+      <p class="form__hint" id="password-error" hidden>Nie udało się przygotować pokoju. Spróbuj ponownie.</p>
     </section>
 
     <footer class="footer">
