@@ -1,4 +1,4 @@
-import { postJson } from './app.js';
+import { appendTokenToUrl, postJson } from './app.js';
 
 const CONFIG_URL = 'assets/data/plan-wieczoru.json';
 const ACCESS_KEY = 'momenty.planWieczoru.access';
@@ -20,6 +20,7 @@ const state = {
 
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
+  const token = params.get('token') || '';
 
   if (params.has('auto')) {
     sessionStorage.setItem(ACCESS_KEY, 'true');
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   if (sessionStorage.getItem(ACCESS_KEY) !== 'true') {
-    window.location.replace('plan-wieczoru.html');
+    window.location.replace(appendTokenToUrl('plan-wieczoru.html', token));
     return;
   }
 
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const participantParam = params.get('pid') || '';
   const participantId = Number.parseInt(participantParam, 10);
   if (!roomKeyParam || Number.isNaN(participantId) || participantId <= 0) {
-    window.location.replace('plan-wieczoru-room.html');
+    window.location.replace(appendTokenToUrl('plan-wieczoru-room.html', token));
     return;
   }
 

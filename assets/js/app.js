@@ -3,7 +3,7 @@ import { games } from './games-data.js';
 const STORAGE_KEY_THEME = 'pary.theme';
 const ACCESS_STORAGE_KEY = 'pary.access.pdp';
 const PLAN_ACCESS_STORAGE_KEY = 'momenty.planWieczoru.access';
-const ACTIVE_TOKEN = new URLSearchParams(window.location.search).get('token') || '';
+export const ACTIVE_TOKEN = new URLSearchParams(window.location.search).get('token') || '';
 
 if (!window.__momentyAccessConfirmed && !document.documentElement.hasAttribute('data-guard-hidden')) {
   document.documentElement.setAttribute('data-guard-hidden', 'true');
@@ -31,7 +31,7 @@ function ensureMomentyGuard() {
   });
 }
 
-function appendTokenToUrl(value, token = ACTIVE_TOKEN) {
+export function appendTokenToUrl(value, token = ACTIVE_TOKEN) {
   if (!value) return value;
   if (!token) return value;
 

@@ -1,12 +1,13 @@
-import { postJson, getJson } from './app.js';
+import { appendTokenToUrl, postJson, getJson } from './app.js';
 
 const params = new URLSearchParams(window.location.search);
 const roomKey = (params.get('room_key') || '').toUpperCase();
 const participantId = params.get('pid');
 const initialDeck = (params.get('deck') || '').toLowerCase();
+const token = params.get('token') || '';
 
 if (!roomKey || !participantId) {
-  window.location.replace('index.html');
+  window.location.replace(appendTokenToUrl('index.html', token));
 }
 
 if (initialDeck) {
@@ -1301,6 +1302,9 @@ function maybeRedirectToWaiting(participant) {
   if (currentDeck && currentDeck !== 'default') {
     params.set('deck', currentDeck);
   }
+  if (token) {
+    params.set('token', token);
+  }
   const targetUrl = new URL(resolveWaitingRoomPath(), window.location.href);
   targetUrl.search = `?${params.toString()}`;
   window.location.replace(targetUrl.toString());
@@ -1332,7 +1336,7 @@ function updateAccessState(participant) {
       message = 'Gospodarz odrzucił Twoją prośbę o dołączenie. Możesz spróbować ponownie później.';
     }
     alert(message);
-    window.location.replace('pytania-dla-par-room.html');
+    window.location.replace(appendTokenToUrl('pytania-dla-par-room.html', token));
   }
 
   setInteractionEnabled(hasFullAccess && isActive);
@@ -1362,10 +1366,14 @@ function buildShareUrl() {
   if (!roomKey) {
     return '';
   }
-  const url = new URL('room-invite.html', window.location.href);
+  const baseUrl = appendTokenToUrl('room-invite.html', token);
+  const url = new URL(baseUrl, window.location.href);
   url.searchParams.set('room_key', roomKey);
   if (currentDeck && currentDeck !== 'default') {
     url.searchParams.set('deck', currentDeck);
+  }
+  if (token) {
+    url.searchParams.set('token', token);
   }
   return url.toString();
 }

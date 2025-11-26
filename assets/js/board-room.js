@@ -1,12 +1,13 @@
-import { getJson, postJson } from './app.js';
+import { appendTokenToUrl, getJson, postJson } from './app.js';
 import { BOARD_TASKS, BOARD_LENGTH } from './board-data.js';
 
 const params = new URLSearchParams(window.location.search);
 const roomKey = (params.get('room_key') || '').toUpperCase();
 const participantId = params.get('pid');
+const token = params.get('token') || '';
 
 if (!roomKey || !participantId) {
-  window.location.replace('planszowa.html');
+  window.location.replace(appendTokenToUrl('planszowa.html', token));
 }
 
 const boardContent = document.getElementById('board-content');
@@ -26,7 +27,7 @@ const boardOpenInvite = document.getElementById('board-open-invite');
 const boardPending = document.getElementById('board-pending');
 const boardPendingList = document.getElementById('board-pending-list');
 const boardPendingEmpty = document.getElementById('board-pending-empty');
-const waitingPage = document.body?.dataset.waitingPage || 'planszowa-waiting.html';
+const waitingPage = appendTokenToUrl(document.body?.dataset.waitingPage || 'planszowa-waiting.html', token);
 
 const tileElements = new Map();
 const tokenPalette = ['board-token--rose', 'board-token--mint', 'board-token--violet', 'board-token--sun'];
@@ -217,8 +218,12 @@ function setupShareArea() {
 }
 
 function buildInviteUrl() {
-  const url = new URL('planszowa-invite.html', window.location.href);
+  const baseUrl = appendTokenToUrl('planszowa-invite.html', token);
+  const url = new URL(baseUrl, window.location.href);
   url.searchParams.set('room_key', roomKey);
+  if (token) {
+    url.searchParams.set('token', token);
+  }
   return url.toString();
 }
 
@@ -251,11 +256,17 @@ async function refreshState() {
     }
     selfInfo = payload.self || null;
     if (!selfInfo) {
-      window.location.replace('planszowa.html');
+      window.location.replace(appendTokenToUrl('planszowa.html', token));
       return;
     }
     if (selfInfo.status === 'pending') {
-      window.location.replace(`${waitingPage}?room_key=${encodeURIComponent(roomKey)}&pid=${encodeURIComponent(participantId || '')}`);
+      const targetUrl = new URL(waitingPage, window.location.href);
+      targetUrl.searchParams.set('room_key', roomKey);
+      targetUrl.searchParams.set('pid', participantId || '');
+      if (token) {
+        targetUrl.searchParams.set('token', token);
+      }
+      window.location.replace(targetUrl.toString());
       return;
     }
     participantsCache = payload.participants || [];

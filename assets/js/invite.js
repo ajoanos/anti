@@ -1,14 +1,15 @@
-import { postJson } from './app.js';
+import { appendTokenToUrl, postJson } from './app.js';
 
 const params = new URLSearchParams(window.location.search);
 const roomKey = (params.get('room_key') || '').toUpperCase();
+const token = params.get('token') || '';
 
 const roomLabel = document.getElementById('invite-room-label');
 const inviteForm = document.getElementById('invite-form');
 const displayNameInput = document.getElementById('invite-display-name');
 const inviteError = document.getElementById('invite-error');
 const inviteHint = document.getElementById('invite-hint');
-const successTarget = inviteForm?.dataset.success || 'room.html';
+const successTarget = appendTokenToUrl(inviteForm?.dataset.success || 'room.html', token);
 const deckParam = (params.get('deck') || '').toLowerCase();
 
 if (deckParam) {
@@ -56,6 +57,9 @@ inviteForm?.addEventListener('submit', async (event) => {
     const redirectDeck = payload.deck || deckParam;
     if (redirectDeck) {
       targetUrl.searchParams.set('deck', redirectDeck);
+    }
+    if (token) {
+      targetUrl.searchParams.set('token', token);
     }
     window.location.href = targetUrl.toString();
   } catch (error) {

@@ -1,16 +1,17 @@
-import { getJson } from './app.js';
+import { appendTokenToUrl, getJson } from './app.js';
 
 const params = new URLSearchParams(window.location.search);
 const roomKey = (params.get('room_key') || '').toUpperCase();
 const participantId = params.get('pid');
+const token = params.get('token') || '';
 
 const waitingTitle = document.getElementById('waiting-title');
 const waitingMessage = document.getElementById('waiting-message');
 const waitingLabel = document.getElementById('waiting-room-label');
 const waitingLeave = document.getElementById('waiting-leave');
-const hostSetupPage = document.body?.dataset.hostPage || 'pytania-dla-par-room.html';
-const backToGames = document.body?.dataset.homePage || 'pytania-dla-par.html';
-const activeRoomPage = document.body?.dataset.roomPage || 'room.html';
+const hostSetupPage = appendTokenToUrl(document.body?.dataset.hostPage || 'pytania-dla-par-room.html', token);
+const backToGames = appendTokenToUrl(document.body?.dataset.homePage || 'pytania-dla-par.html', token);
+const activeRoomPage = appendTokenToUrl(document.body?.dataset.roomPage || 'room.html', token);
 const datasetDeck = (document.body?.dataset.deck || '').toLowerCase();
 const deckParam = (params.get('deck') || datasetDeck || '').toLowerCase();
 
@@ -99,6 +100,9 @@ if (!roomKey || !participantId) {
     targetUrl.searchParams.set('pid', participantId);
     if (deckParam) {
       targetUrl.searchParams.set('deck', deckParam);
+    }
+    if (token) {
+      targetUrl.searchParams.set('token', token);
     }
     window.location.replace(targetUrl.toString());
   }
